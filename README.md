@@ -54,7 +54,7 @@ The architecture is organized into five cohesive layers:
    subgraph queries, source resolution, reading-path recovery, and structured
    research artifacts.
 
-## What can it do for GitHub users and developers?
+## What can it do for you?
 
 ### Deep mathematical insight for model design
 
