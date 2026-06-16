@@ -8,6 +8,10 @@ This public repository is intended to distribute the skill, schema,
 documentation, and derived knowledge layers without bundling the original
 `Data/` evidence corpus.
 
+The omitted `Data/` directory is the original evidence layer: a locally
+collected and organized archive of Su Jianlin blog materials, including source
+markdown converted from original pages and related assets.
+
 ## Repository layout
 
 - `SKILL.md`: skill entrypoint
@@ -61,8 +65,14 @@ See [LICENSE-content.md](LICENSE-content.md).
 This repository is built around content derived from the blog corpus of Su
 Jianlin.
 
-- Author: Su Jianlin
-- Sites: `https://spaces.ac.cn/` and `https://kexue.fm/`
+- Original author: Su Jianlin
+- Original sites: `https://spaces.ac.cn/` and `https://kexue.fm/`
+
+The `wiki/` and `graph/` directories are curated and structured by this
+repository's maintainers. They contain maintainer-authored organization,
+selection, and structured representation. However, they are still derived from
+the upstream blog corpus and are therefore distributed under CC BY-NC-SA 4.0
+rather than MIT.
 
 Where upstream attribution is preserved in file metadata or page frontmatter,
 that attribution should remain intact in downstream reuse.
