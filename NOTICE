@@ -9,6 +9,7 @@ includes, unless noted otherwise:
 - `visualize.html`
 - `schema.md`
 - `README.md`
+- `README_zh.md`
 - `.gitignore`
 - build, test, and packaging files
 - `purpose.md` if added later
@@ -19,6 +20,7 @@ CC BY-NC-SA 4.0. This includes, unless noted otherwise:
 
 - `wiki/`
 - `graph/`
+- `figures/`
 - `probes/` if added later
 
 The repository is designed to work without bundling the original evidence

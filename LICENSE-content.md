@@ -7,6 +7,7 @@ Unless a file states otherwise, the following directories are distributed under
 the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
 license:
 
+- `figures/`
 - `wiki/`
 - `graph/`
 - `probes/`
