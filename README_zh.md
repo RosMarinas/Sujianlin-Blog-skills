@@ -4,7 +4,7 @@
 
 `cognitive-knowledge-network` 是一个面向 人类与Agent 的本地认知知识库与技能包，该仓库将Sujianlin的blog进行了整理，形成了一份面向概念与方法的“认知型知识网络”，并整理成了面向人类阅读友好的可视化wiki与面向agent阅读友好的skill。
 
-这个公开仓库分发的是技能、schema、文档和派生知识层，不包含原始 `Data/`语料，`Data/`是对苏剑林博客材料进行本地采集、整理后形成的归档，包含从原始页面转换得到的 markdown 以及相关资源文件。
+这个公开仓库分发的是技能、schema、文档和派生知识层，不包含原始 `Data/`语料，`Data/`是对苏剑林博客材料进行本地采集、整理后形成的归档，包含从原始页面转换得到的 markdown 以及相关资源文件。但Data并不是必须的，graph下已经有足够的内容了。这个仓库的核心是启发式的关系，其次才是内容。
 
 ## 什么是 Cognitive Knowledge Network？
 
