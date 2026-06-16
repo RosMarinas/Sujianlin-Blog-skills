@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Wiki Cognitive Graph Visualizer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked@12.0.1/lib/marked.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/force-graph@1.43.4/dist/force-graph.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0f172a; /* Deep Slate Dark Background */
+            --panel-bg: rgba(255, 255, 255, 0.92); /* Semi-transparent Premium White Panel */
+            --panel-border: #cbd5e1; /* Soft Light Border */
+            --text-main: #0f172a; /* Dark Slate Main Text */
+            --text-muted: #475569; /* Muted Slate Gray Text */
+            --accent: #E3625D; /* Coral Red Accent */
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+        #main-container {
+            flex-grow: 1;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        #graph-container {
+            width: 100%;
+            height: 100%;
+        }
+        #sidebar {
+            width: 450px;
+            min-width: 300px;
+            max-width: 600px;
+            height: 100%;
+            background-color: var(--panel-bg);
+            border-left: 1px solid var(--panel-border);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
+            z-index: 10;
+        }
+        #sidebar.collapsed {
+            transform: translateX(100%);
+            position: absolute;
+            right: 0;
+        }
+        .sidebar-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--panel-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .sidebar-content {
+            padding: 20px;
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+        /* Card & Badges */
+        .badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        /* Overlay Panels */
+        .overlay-panel {
+            position: absolute;
+            background-color: var(--panel-bg);
+            border: 1px solid var(--panel-border);
+            backdrop-filter: blur(12px);
+            border-radius: 8px;
+            padding: 10px;
+            z-index: 5;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        #control-panel {
+            top: 20px;
+            left: 20px;
+            width: 240px;
+        }
+        #legend-panel {
+            bottom: 20px;
+            left: 20px;
+            width: 220px;
+        }
+        
+        /* Markdown & Wikilinks styles */
+        .markdown-body {
+            line-height: 1.62;
+            font-size: 0.95rem;
+            font-family: 'Lora', Georgia, serif;
+        }
+        .markdown-body h1, .markdown-body h2, .markdown-body h3, 
+        .markdown-body h4, .markdown-body h5, .markdown-body h6 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-main);
+            margin-top: 1.4em;
+            margin-bottom: 0.5em;
+            font-weight: 600;
+        }
+        .markdown-body p {
+            margin-top: 0;
+            margin-bottom: 1.2em;
+            color: var(--text-main);
+        }
+        .markdown-body ul, .markdown-body ol {
+            padding-left: 20px;
+            margin-bottom: 1.2em;
+            color: var(--text-main);
+        }
+        .markdown-body li {
+            margin-bottom: 0.3em;
+        }
+        .markdown-body code {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #f3f1e8;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            color: #cc5a37;
+            border: none;
+        }
+        .markdown-body pre {
+            background-color: #141413;
+            color: #faf9f5;
+            padding: 14px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-bottom: 1.2em;
+        }
+        .markdown-body pre code {
+            background-color: transparent;
+            padding: 0;
+            border-radius: 0;
+            color: inherit;
+            font-size: 0.85em;
+            border: none;
+        }
+        .markdown-body blockquote {
+            margin: 0 0 1.2em 0;
+            padding: 10px 16px;
+            border-left: 3px solid var(--accent);
+            background: #f8fafc;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+        .markdown-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.2em;
+            font-size: 0.88rem;
+            border: 1px solid var(--panel-border);
+        }
+        .markdown-body th, .markdown-body td {
+            border: 1px solid var(--panel-border);
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .markdown-body th {
+            background-color: #f6f5f0;
+            color: var(--text-main);
+            font-weight: 600;
+        }
+        .markdown-body tr:nth-child(even) {
+            background-color: #faf9f5;
+        }
+        
+        /* LaTeX Formula Rendering Improvements */
+        .katex-display {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 12px 6px;
+            margin: 1em 0;
+            background: #fdfdfb;
+            border: 1px dashed var(--panel-border);
+            border-radius: 6px;
+        }
+        .katex {
+            font-size: 1.05em;
+            margin: 0 0.1em;
+        }
+        
+        /* Wikilinks & broken links */
+        .wikilink {
+            color: var(--accent);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--accent);
+            cursor: pointer;
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .wikilink:hover {
+            color: #3b5a6c;
+            border-bottom-style: solid;
+        }
+        .broken-link {
+            color: #c0392b;
+            text-decoration: none;
+            border-bottom: 1px dotted #c0392b;
+            cursor: not-allowed;
+        }
+        .metadata-card {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.02);
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(92, 127, 144, 0.2);
+            border-radius: 3px;
+            transition: background 0.2s;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(92, 127, 144, 0.4);
+        }
+
+        /* Search item hover styling */
+        .search-item:hover {
+            background-color: rgba(92, 127, 144, 0.08) !important;
+        }
+        .search-item:last-child {
+            border-bottom: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="main-container">
+        <div id="graph-container"></div>
+        
+        <div id="control-panel" class="overlay-panel" style="top: 20px; left: 20px; width: 250px; background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 8px; padding: 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
+            <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 0.9rem; font-weight: 600; color: var(--text-main); border-bottom: 1px solid var(--panel-border); padding-bottom: 8px; font-family: 'Poppins';">控制 (Controls)</h3>
+            
+            <!-- 1. Search Box -->
+            <div style="margin-bottom: 14px; position: relative;">
+                <label style="display: block; font-size: 0.75rem; font-weight: 500; color: var(--text-muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.02em; font-family: 'Poppins';">搜索</label>
+                <div style="position: relative;">
+                    <input id="search-input" type="text" placeholder="搜索名称、ID或别名..." style="width: 100%; background: #f8fafc; border: 1px solid var(--panel-border); color: var(--text-main); padding: 7px 24px 7px 10px; border-radius: 6px; outline: none; font-size: 0.8rem; box-sizing: border-box; font-family: inherit; transition: all 0.2s;" autocomplete="off" />
+                    <span id="search-clear" style="position: absolute; right: 8px; top: 50%; transform: translateY(-50%); cursor: pointer; color: var(--text-muted); display: none; font-size: 0.9rem; font-weight: bold;">&times;</span>
+                </div>
+                <div id="search-results" style="position: absolute; top: calc(100% + 4px); left: 0; right: 0; background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 6px; max-height: 200px; overflow-y: auto; z-index: 100; display: none; box-shadow: 0 4px 16px rgba(0,0,0,0.08);"></div>
+            </div>
+
+            <!-- 2. Node Type Filtering -->
+            <div style="margin-bottom: 14px; border-top: 1px solid var(--panel-border); padding-top: 10px;">
+                <label style="display: block; font-size: 0.75rem; font-weight: 500; color: var(--text-muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.02em; font-family: 'Poppins';">过滤</label>
+                <div id="filter-container" style="display: flex; flex-direction: column; gap: 6px; max-height: 140px; overflow-y: auto; padding-right: 4px; font-size: 0.8rem;">
+                    <!-- Dynamically populated -->
+                </div>
+            </div>
+
+            <!-- 3. Particles Flow Toggle -->
+            <div style="margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between;">
+                <label style="font-size: 0.8rem; color: var(--text-main); font-weight: 500; cursor: pointer;" for="particles-toggle">动态流向 (Flow)</label>
+                <input type="checkbox" id="particles-toggle" checked style="cursor: pointer; width: 14px; height: 14px; accent-color: var(--accent);" />
+            </div>
+
+            <!-- 4. Charge Sliders -->
+            <div style="margin-bottom: 10px; border-top: 1px solid var(--panel-border); padding-top: 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <label style="font-size: 0.75rem; color: var(--text-main); font-weight: 500;">排斥力</label>
+                    <span id="charge-val" style="font-size: 0.75rem; color: var(--accent); font-weight: 600;">-200</span>
+                </div>
+                <input type="range" id="charge-slider" min="-1200" max="-100" value="-200" style="width: 100%; accent-color: var(--accent); height: 3px; background: #e8e6dc; border-radius: 2px; cursor: pointer; margin: 4px 0;" />
+            </div>
+            <div style="margin-bottom: 14px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+                    <label style="font-size: 0.75rem; color: var(--text-main); font-weight: 500;">连线长度</label>
+                    <span id="link-val" style="font-size: 0.75rem; color: var(--accent); font-weight: 600;">80</span>
+                </div>
+                <input type="range" id="link-slider" min="30" max="300" value="80" style="width: 100%; accent-color: var(--accent); height: 3px; background: #e8e6dc; border-radius: 2px; cursor: pointer; margin: 4px 0;" />
+            </div>
+
+            <!-- 5. Physics Freeze Button -->
+            <button id="physics-toggle" style="width: 100%; background: #faf9f5; border: 1px solid var(--panel-border); color: var(--text-main); padding: 8px 10px; border-radius: 6px; cursor: pointer; font-weight: 500; font-size: 0.8rem; font-family: 'Poppins'; transition: all 0.2s;">
+                固定布局 (Freeze)
+            </button>
+        </div>
+        
+        <div id="legend-panel" class="overlay-panel" style="bottom: 20px; left: 20px; width: 250px; background: var(--panel-bg); border: 1px solid var(--panel-border); border-radius: 8px; padding: 12px 16px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);">
+            <h4 style="margin-top: 0; margin-bottom: 8px; font-size: 0.8rem; font-weight: 600; color: var(--text-main); border-bottom: 1px solid var(--panel-border); padding-bottom: 6px; font-family: 'Poppins';">图例</h4>
+        </div>
+    </div>
+    <div id="sidebar" class="collapsed">
+        <div class="sidebar-header">
+            <h2 id="node-title" style="margin: 0; font-size: 1.25rem; font-weight: 600; color: var(--text-main);">节点详情</h2>
+            <button onclick="toggleSidebar()" style="background: transparent; border: 1px solid var(--panel-border); color: var(--text-muted); padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.75rem; font-family: 'Poppins'; font-weight: 500; transition: all 0.2s;">收起</button>
+        </div>
+        <div class="sidebar-content" id="node-content">
+            选择一个节点以查看详细内容。
+        </div>
+    </div>
+    <script>
+        // 渲染与布局超参数 (Hyperparameters for rendering & layout)
+        const GRAPH_CONFIG = {
+            nodeBaseSize: 24,        // 节点基础大小
+            nodeValMultiplier: 16,  // 节点大小随着连接数(degree)增长的乘数
+            collisionPadding: 10      // 节点碰撞间距
+        };
+
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+        }
+
+        let allNodes = [];
+        let gFullNodes = [];
+        let gFullLinks = [];
+
+        function parseMarkdown(sourceText) {
+            const frontmatterRegex = /^---\r?\n([\s\S]+?)\r?\n---/;
+            const match = sourceText.match(frontmatterRegex);
+            let metadata = {};
+            let body = sourceText;
+            
+            if (match) {
+                const yamlText = match[1];
+                body = sourceText.slice(match[0].length);
+                const lines = yamlText.split('\n');
+                let currentKey = null;
+                
+                lines.forEach(line => {
+                    const trimmed = line.trim();
+                    if (trimmed === '') return;
+                    
+                    if (trimmed.startsWith('- ')) {
+                        const val = trimmed.slice(2).trim().replace(/^['"]|['"]$/g, '');
+                        if (currentKey) {
+                            if (!Array.isArray(metadata[currentKey])) {
+                                metadata[currentKey] = [];
+                            }
+                            metadata[currentKey].push(val);
+                        }
+                    } else {
+                        const colonIdx = line.indexOf(':');
+                        if (colonIdx !== -1) {
+                            const key = line.slice(0, colonIdx).trim();
+                            let value = line.slice(colonIdx + 1).trim();
+                            
+                            if (value === '') {
+                                metadata[key] = [];
+                            } else if (value.startsWith('[') && value.endsWith(']')) {
+                                metadata[key] = value.slice(1, -1).split(',').map(s => s.trim().replace(/^['"]|['"]$/g, ''));
+                            } else {
+                                metadata[key] = value.replace(/^['"]|['"]$/g, '');
+                            }
+                            currentKey = key;
+                        }
+                    }
+                });
+            }
+            return { metadata, body };
+        }
+
+        function renderMarkdownWithMath(body) {
+            const blocks = [];
+            const inlines = [];
+            
+            // Replace block math $$...$$ and \[...\]
+            const blockRegex = /(?:\$\$([\s\S]+?)\$\$)|(?:\\\[([\s\S]+?)\\\])/g;
+            let bodyWithPlaceholders = body.replace(blockRegex, (match, p1, p2) => {
+                blocks.push(p1 || p2);
+                return `MATHBLOCKPLACEHOLDER${blocks.length - 1}X`;
+            });
+            
+            // Replace inline math $...$ and \(...\)
+            const inlineRegex = /(?:\$([^\$\s\n](?:[^\$\n]*?[^\$\s\n])?)\$)|(?:\\\(([\s\S]+?)\\\))/g;
+            bodyWithPlaceholders = bodyWithPlaceholders.replace(inlineRegex, (match, p1, p2) => {
+                inlines.push(p1 || p2);
+                return `MATHINLINEPLACEHOLDER${inlines.length - 1}X`;
+            });
+            
+            // Call marked.parse
+            let html = marked.parse(bodyWithPlaceholders);
+            
+            // Replace block math placeholders back with KaTeX rendered HTML
+            for (let index = blocks.length - 1; index >= 0; index--) {
+                const formula = blocks[index];
+                try {
+                    const rendered = katex.renderToString(formula, { displayMode: true, throwOnError: false });
+                    html = html.replaceAll(`MATHBLOCKPLACEHOLDER${index}X`, () => rendered);
+                } catch (e) {
+                    console.error("KaTeX block error:", e);
+                    html = html.replaceAll(`MATHBLOCKPLACEHOLDER${index}X`, () => `$$${formula}$$`);
+                }
+            }
+            
+            // Replace inline math placeholders back with KaTeX rendered HTML
+            for (let index = inlines.length - 1; index >= 0; index--) {
+                const formula = inlines[index];
+                try {
+                    const rendered = katex.renderToString(formula, { displayMode: false, throwOnError: false });
+                    html = html.replaceAll(`MATHINLINEPLACEHOLDER${index}X`, () => rendered);
+                } catch (e) {
+                    console.error("KaTeX inline error:", e);
+                    html = html.replaceAll(`MATHINLINEPLACEHOLDER${index}X`, () => `$${formula}$`);
+                }
+            }
+            
+            return html;
+        }
+
+        function translateWikilinks(html, nodes) {
+            const regex = /\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g;
+            return html.replace(regex, (match, target, alias) => {
+                const display = alias || target;
+                const trimmedTarget = target.trim();
+                const targetLower = trimmedTarget.toLowerCase();
+                
+                const node = nodes.find(n => 
+                    (n.title && n.title.trim().toLowerCase() === targetLower) ||
+                    (n.aliases && n.aliases.some(a => a.trim().toLowerCase() === targetLower)) ||
+                    (n.id && n.id.trim().toLowerCase() === targetLower)
+                );
+                
+                if (node) {
+                    return `<a href="#" class="wikilink" data-node-id="${node.id}">${display}</a>`;
+                } else {
+                    return `<span class="broken-link">${display}</span>`;
+                }
+            });
+        }
+
+        function getNodeIdByTitleOrAlias(target) {
+            if (!target) return '';
+            const targetLower = target.trim().toLowerCase();
+            const found = allNodes.find(n => 
+                (n.title && n.title.trim().toLowerCase() === targetLower) ||
+                (n.aliases && n.aliases.some(a => a.trim().toLowerCase() === targetLower)) ||
+                (n.id && n.id.trim().toLowerCase() === targetLower)
+            );
+            return found ? found.id : target;
+        }
+
+        function renderWikilinkList(list) {
+            if (!list || !list.length) return '<span style="color: var(--text-muted); font-size: 0.85rem;">无</span>';
+            const items = Array.isArray(list) ? list : [list];
+            return `<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px;">
+                ${items.map(item => {
+                    let display = item;
+                    let target = item;
+                    const match = item.match(/^\[\[([^\]|]+)(?:\|([^\]]+))?\]\]$/);
+                    if (match) {
+                        target = match[1];
+                        display = match[2] || match[1];
+                    }
+                    const foundId = getNodeIdByTitleOrAlias(target);
+                    return `<a href="#" class="wikilink" data-node-id="${foundId}" style="font-size: 0.85rem; background: rgba(92, 127, 144, 0.08); padding: 2px 8px; border-radius: 4px; text-decoration: none; color: var(--accent); border: 1px solid rgba(92, 127, 144, 0.15); transition: all 0.2s;">${display}</a>`;
+                }).join('')}
+            </div>`;
+        }
+
+        function getSpecializedDetailsCard(type, metadata) {
+            if (!type || !metadata) return '';
+            let html = '';
+            const sectionStyle = 'margin-top: 10px; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 8px;';
+            const labelStyle = 'font-weight: 600; color: var(--text-main); font-size: 0.9rem;';
+            const valueStyle = 'font-size: 0.88rem; color: #475569; margin-top: 2px;';
+            
+            switch (type.toLowerCase()) {
+                case 'concept':
+                    if (metadata.definition) {
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">核心定义:</div><div style="${valueStyle}">${metadata.definition}</div></div>`;
+                    }
+                    if (metadata.standard_notation) {
+                        const notationStr = typeof metadata.standard_notation === 'object' ? JSON.stringify(metadata.standard_notation, null, 2) : metadata.standard_notation;
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">标准符号:</div><pre style="font-size: 0.8rem; margin: 4px 0 0 0; padding: 6px;"><code>${notationStr}</code></pre></div>`;
+                    }
+                    if (metadata.prerequisites) {
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">前置依赖:</div>${renderWikilinkList(metadata.prerequisites)}</div>`;
+                    }
+                    break;
+                    
+                case 'formula':
+                    if (metadata.latex) {
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">公式本体:</div><div style="background: rgba(0,0,0,0.02); padding: 8px; border-radius: 4px; overflow-x: auto; margin-top: 4px;">$$${metadata.latex}$$</div></div>`;
+                    }
+                    if (metadata.conditions) {
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">成立条件:</div><div style="${valueStyle}">${metadata.conditions}</div></div>`;
+                    }
+                    if (metadata.symbol_meanings) {
+                        const meaningsStr = typeof metadata.symbol_meanings === 'object' ? JSON.stringify(metadata.symbol_meanings, null, 2) : metadata.symbol_meanings;
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">符号含义:</div><pre style="font-size: 0.8rem; margin: 4px 0 0 0; padding: 6px;"><code>${meaningsStr}</code></pre></div>`;
+                    }
+                    break;
+                    
+                case 'proposition':
+                    if (metadata.statement) {
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">命题陈述:</div><div style="${valueStyle}">${metadata.statement}</div></div>`;
+                    }
+                    if (metadata.assumptions) {
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">前提条件:</div><div style="${valueStyle}">${metadata.assumptions}</div></div>`;
+                    }
+                    if (metadata.proof_route) {
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">证明路线:</div><div style="${valueStyle}">${metadata.proof_route}</div></div>`;
+                    }
+                    if (metadata.limits) {
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">局限与限制:</div><div style="${valueStyle}">${metadata.limits}</div></div>`;
+                    }
+                    break;
+                    
+                case 'method':
+                    if (metadata.operation_types) {
+                        const opStr = typeof metadata.operation_types === 'object' ? JSON.stringify(metadata.operation_types, null, 2) : metadata.operation_types;
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">操作类型:</div><pre style="font-size: 0.8rem; margin: 4px 0 0 0; padding: 6px;"><code>${opStr}</code></pre></div>`;
+                    }
+                    if (metadata.method_summary) {
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">方法摘要:</div><div style="${valueStyle}">${metadata.method_summary}</div></div>`;
+                    }
+                    if (metadata.typical_structure) {
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">典型步骤结构:</div><div style="${valueStyle}">${metadata.typical_structure}</div></div>`;
+                    }
+                    break;
+                    
+                case 'problem_pattern':
+                    if (metadata.pattern_summary) {
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">问题结构:</div><div style="${valueStyle}">${metadata.pattern_summary}</div></div>`;
+                    }
+                    if (metadata.trigger_questions) {
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">触发提问:</div><div style="${valueStyle}">${metadata.trigger_questions}</div></div>`;
+                    }
+                    if (metadata.activates_methods) {
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">激活方法:</div>${renderWikilinkList(metadata.activates_methods)}</div>`;
+                    }
+                    break;
+                    
+                case 'example':
+                    if (metadata.claim) {
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">核心主张:</div><div style="${valueStyle}">${metadata.claim}</div></div>`;
+                    }
+                    if (metadata.notation_mapping) {
+                        const mappingStr = typeof metadata.notation_mapping === 'object' ? JSON.stringify(metadata.notation_mapping, null, 2) : metadata.notation_mapping;
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">符号映射:</div><pre style="font-size: 0.8rem; margin: 4px 0 0 0; padding: 6px;"><code>${mappingStr}</code></pre></div>`;
+                    }
+                    if (metadata.steps && Array.isArray(metadata.steps)) {
+                        let stepsHtml = '<ol style="margin-top: 4px; padding-left: 20px; font-size: 0.88rem; color: #475569;">';
+                        metadata.steps.forEach(s => {
+                            if (s.description) stepsHtml += `<li style="margin-bottom: 4px;">${s.description}</li>`;
+                        });
+                        stepsHtml += '</ol>';
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">具体步骤:</div>${stepsHtml}</div>`;
+                    }
+                    break;
+                    
+                case 'series':
+                    if (metadata.series_goal) {
+                        html += `<div style="${sectionStyle}"><div style="${labelStyle}">系列终极目标:</div><div style="${valueStyle}">${metadata.series_goal}</div></div>`;
+                    }
+                    break;
+            }
+            return html;
+        }
+
+        async function selectNode(nodeId) {
+            if (!graph) return;
+            const node = graph.graphData().nodes.find(n => n.id === nodeId) || allNodes.find(n => n.id === nodeId);
+            if (!node) return;
+            
+            // Zoom and center - wrap in setTimeout to avoid collision with synchronous drag start events
+            setTimeout(() => {
+                if (node.x !== undefined && node.y !== undefined && !isNaN(node.x) && !isNaN(node.y)) {
+                    graph.centerAt(node.x, node.y, 2000);
+                    graph.zoom(2.5, 2000);
+                }
+            }, 100);
+            
+            // Expand sidebar
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.remove('collapsed');
+            
+            // Update title
+            document.getElementById('node-title').textContent = node.title || node.id;
+            
+            const contentDiv = document.getElementById('node-content');
+            contentDiv.innerHTML = '<div style="display:flex;justify-content:center;padding:40px;"><span style="color:var(--text-muted)">加载中...</span></div>';
+            
+            // Gather relationships (incoming & outgoing links)
+            const graphLinks = graph.graphData().links || [];
+            const incoming = [];
+            const outgoing = [];
+            
+            graphLinks.forEach(link => {
+                const sourceId = (link.source && typeof link.source === 'object') ? link.source.id : link.source;
+                const targetId = (link.target && typeof link.target === 'object') ? link.target.id : link.target;
+                
+                if (targetId === node.id) {
+                    const srcNode = allNodes.find(n => n.id === sourceId);
+                    if (srcNode) {
+                        incoming.push({ node: srcNode, type: link.type });
+                    }
+                } else if (sourceId === node.id) {
+                    const tgtNode = allNodes.find(n => n.id === targetId);
+                    if (tgtNode) {
+                        outgoing.push({ node: tgtNode, type: link.type });
+                    }
+                }
+            });
+            
+            const makeLinkList = (list) => {
+                if (!list.length) return '<span style="color: var(--text-muted); font-size: 0.85rem;">无</span>';
+                return `<ul style="margin: 4px 0 0 0; padding-left: 20px; font-size: 0.9rem; list-style-type: circle;">
+                    ${list.map(item => {
+                        const clr = TYPE_COLORS[(item.node.type || '').toLowerCase()] || '#64748b';
+                        return `<li style="margin-bottom: 4px;">
+                            <span style="font-size: 0.7rem; padding: 1px 4px; border-radius: 3px; background: ${clr}15; color: ${clr}; border: 1px solid ${clr}33; margin-right: 4px;">${item.type || 'relates'}</span>
+                            <a href="#" class="wikilink" data-node-id="${item.node.id}">${item.node.title || item.node.id}</a>
+                        </li>`;
+                    }).join('')}
+                </ul>`;
+            };
+            
+            const incomingHtml = makeLinkList(incoming);
+            const outgoingHtml = makeLinkList(outgoing);
+            
+            // Check if type is evidence_span, find parent article
+            let parentArticleHtml = '';
+            if (node.type === 'evidence_span' && node.source_ids && node.source_ids.length > 0) {
+                const parentId = 'article::' + node.source_ids[0];
+                const parentNode = allNodes.find(n => n.id === parentId);
+                if (parentNode) {
+                    parentArticleHtml = `
+                        <div style="margin-top: 12px; font-size: 0.9rem; color: var(--text-main);">
+                            <strong>关联文章:</strong> 
+                            <a href="#" class="wikilink" data-node-id="${parentNode.id}">${parentNode.title || parentNode.id}</a>
+                        </div>
+                    `;
+                }
+            }
+            
+            const typeColor = TYPE_COLORS[(node.type || '').toLowerCase()] || '#64748b';
+            
+            const getMetadataCard = (status, updated, summary, specHtml = '') => `
+                <div class="metadata-card" style="background: #f8fafc; border: 1px solid var(--panel-border); padding: 12px 16px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);">
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+                        <span class="badge" style="background: ${typeColor}; color: #1e293b;">${node.type || 'unknown'}</span>
+                        <span class="badge" style="background: #e2e8f0; border: 1px solid #cbd5e1; color: var(--text-main);">状态: ${status || node.status || 'unknown'}</span>
+                        ${updated ? `<span class="badge" style="background: #e2e8f0; border: 1px solid #cbd5e1; color: var(--text-main);">更新: ${updated}</span>` : ''}
+                    </div>
+                    ${parentArticleHtml}
+                    ${summary ? `<div style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.4; margin-top: 8px;"><strong>摘要:</strong> ${summary}</div>` : ''}
+                    ${specHtml}
+                </div>
+            `;
+            
+            const getRelationsCard = () => `
+                <div class="relations-card" style="background: #f8fafc; border: 1px solid var(--panel-border); padding: 12px 16px; border-radius: 8px; margin-top: 20px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);">
+                    <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 0.95rem; color: var(--text-main); border-bottom: 1px solid var(--panel-border); padding-bottom: 6px;">图谱关系</h3>
+                    <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; margin-bottom: 4px;">输入关联 (Incoming)</div>
+                            ${incomingHtml}
+                        </div>
+                        <div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; margin-bottom: 4px;">输出关联 (Outgoing)</div>
+                            ${outgoingHtml}
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            if (node.wiki_path) {
+                try {
+                    const response = await fetch('/' + node.wiki_path);
+                    if (!response.ok) {
+                        throw new Error(`无法获取文件 (Status: ${response.status})`);
+                    }
+                    const text = await response.text();
+                    const { metadata, body } = parseMarkdown(text);
+                    
+                    const combinedStatus = metadata.status || node.status || 'unknown';
+                    const combinedUpdated = metadata.updated || metadata.updated_at || node.updated || 'N/A';
+                    const combinedSummary = metadata.summary || node.summary || '';
+                    const specCard = getSpecializedDetailsCard(node.type || '', metadata);
+                    
+                    let renderedHtml = renderMarkdownWithMath(body);
+                    renderedHtml = translateWikilinks(renderedHtml, graph.graphData().nodes.length ? graph.graphData().nodes : allNodes);
+                    
+                    contentDiv.innerHTML = `
+                        ${getMetadataCard(combinedStatus, combinedUpdated, combinedSummary, specCard)}
+                        <div class="markdown-body" style="font-size: 0.95rem; line-height: 1.6; color: var(--text-main);">
+                            ${renderedHtml}
+                        </div>
+                        ${getRelationsCard()}
+                    `;
+                } catch (err) {
+                    console.error("读取 Wiki 文件失败:", err);
+                    contentDiv.innerHTML = `
+                        ${getMetadataCard(node.status, null, node.summary)}
+                        <div style="color: #c0392b; padding: 10px; background: rgba(192, 57, 43, 0.05); border: 1px solid rgba(192, 57, 43, 0.15); border-radius: 6px; font-size: 0.9rem; margin-bottom: 15px;">
+                            <strong>关联文件读取失败：</strong>${err.message || err}
+                        </div>
+                        <div style="font-size: 0.9rem; color: var(--text-muted); font-style: italic;">
+                            注：该节点有关联文件 ${node.wiki_path} 但加载失败。您可以参考下方图谱关系。
+                        </div>
+                        ${getRelationsCard()}
+                    `;
+                }
+            } else {
+                contentDiv.innerHTML = `
+                    ${getMetadataCard(node.status, null, node.summary)}
+                    <div style="color: var(--text-muted); padding: 12px; background: rgba(0, 0, 0, 0.02); border: 1px solid var(--panel-border); border-radius: 6px; font-size: 0.9rem; margin-bottom: 15px; line-height: 1.5;">
+                        该节点为结构化知识点，无独立 Wiki 页面。
+                    </div>
+                    ${getRelationsCard()}
+                `;
+            }
+        }
+
+        // Set up click event delegation for wikilinks
+        document.addEventListener('DOMContentLoaded', () => {
+            const contentDiv = document.getElementById('node-content');
+            if (contentDiv) {
+                contentDiv.addEventListener('click', e => {
+                    const wikilink = e.target.closest('.wikilink');
+                    if (wikilink) {
+                        e.preventDefault();
+                        const nodeId = wikilink.getAttribute('data-node-id');
+                        if (nodeId) {
+                            selectNode(nodeId);
+                        }
+                    }
+                });
+            }
+        });
+
+        const parseJSONL = text => text.trim().split('\n').filter(Boolean).map(JSON.parse);
+
+        function setupFilterUI() {
+            const counts = {};
+            gFullNodes.forEach(n => {
+                const type = (n.type || '').toLowerCase();
+                counts[type] = (counts[type] || 0) + 1;
+            });
+
+            const container = document.getElementById('filter-container');
+            container.innerHTML = Object.keys(TYPE_COLORS).map(type => {
+                const count = counts[type] || 0;
+                if (count === 0) return '';
+                const color = TYPE_COLORS[type];
+                const defaultChecked = (type !== 'evidence_span' && type !== 'source');
+                
+                return `
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 2px;">
+                        <div style="display: flex; align-items: center; gap: 6px;">
+                            <input type="checkbox" class="type-filter-checkbox" value="${type}" id="filter-${type}" ${defaultChecked ? 'checked' : ''} style="cursor: pointer; accent-color: var(--accent);" />
+                            <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background-color: ${color}; border: 1px solid rgba(0, 0, 0, 0.05);"></span>
+                            <label for="filter-${type}" style="cursor: pointer; color: var(--text-main); font-weight: 500;">${type.charAt(0).toUpperCase() + type.slice(1)}</label>
+                        </div>
+                        <span style="color: var(--text-muted); font-size: 0.75rem;">(${count})</span>
+                    </div>
+                `;
+            }).join('');
+
+            document.querySelectorAll('.type-filter-checkbox').forEach(cb => {
+                cb.addEventListener('change', applyFilters);
+            });
+        }
+
+        function applyFilters() {
+            const activeTypes = new Set(
+                Array.from(document.querySelectorAll('.type-filter-checkbox:checked'))
+                     .map(cb => cb.value)
+            );
+
+            // Filter nodes
+            const filteredNodes = gFullNodes.filter(n => activeTypes.has((n.type || '').toLowerCase()));
+            const filteredNodeIds = new Set(filteredNodes.map(n => n.id));
+
+            // Filter links
+            const filteredLinks = gFullLinks.filter(l => {
+                const s = typeof l.source === 'object' ? l.source.id : l.source;
+                const t = typeof l.target === 'object' ? l.target.id : l.target;
+                return filteredNodeIds.has(s) && filteredNodeIds.has(t);
+            });
+
+            graph.graphData({ nodes: filteredNodes, links: filteredLinks });
+            graph.d3ReheatSimulation();
+        }
+
+        async function loadGraphData() {
+            const [nodesRes, edgesRes] = await Promise.all([
+                fetch('/graph/nodes.jsonl'),
+                fetch('/graph/edges.jsonl')
+            ]);
+            const nodesText = await nodesRes.text();
+            const edgesText = await edgesRes.text();
+
+            const nodes = parseJSONL(nodesText);
+            const edges = parseJSONL(edgesText);
+
+            const nodeIds = new Set(nodes.map(n => n.id));
+            // Map edges to Force-Graph format: source, target
+            // Filter out edges with missing source or target nodes to prevent D3 warnings
+            const links = edges
+                .filter(e => nodeIds.has(e.source) && nodeIds.has(e.target))
+                .map(e => ({
+                    source: e.source,
+                    target: e.target,
+                    type: e.edge_type,
+                    confidence: e.confidence
+                }));
+
+            return { nodes, links };
+        }
+
+        // 颜色映射
+        const TYPE_COLORS = {
+            'concept': '#7895C1',          // 灰蓝色
+            'series': '#992224',           // 深红
+            'reading_path': '#A8CBDF',     // 浅灰蓝
+            'topic': '#8074C8',            // 蓝紫色
+            'synthesis': '#B54764',        // 玫瑰粉红
+            'method': '#E3625D',           // 珊瑚红
+            'problem_pattern': '#EF8B67',  // 浅橙色
+            'formula': '#F0C284',          // 淡橙黄
+            'proposition': '#F5EBAE',      // 浅柠檬黄
+            'example': '#F7FBC9',          // 极浅奶黄
+            'article': '#D6EFF4',          // 浅冰蓝
+            'source': '#F2FAFC',           // 极浅蓝白
+            'evidence_span': '#F2FAFC'     // 极浅蓝白 (复用)
+        };
+
+        let isPhysicsRunning = true;
+        let showParticles = true;
+        let graph = null;
+
+        let highlightNode = null;
+        const highlightNeighbors = new Set();
+        const highlightLinks = new Set();
+
+        function updateLegend() {
+            const legendPanel = document.getElementById('legend-panel');
+            legendPanel.innerHTML = '<h4 style="margin-top: 0; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-main); border-bottom: 1px solid var(--panel-border); padding-bottom: 4px;">图例</h4>';
+            
+            const listContainer = document.createElement('div');
+            listContainer.style.display = 'flex';
+            listContainer.style.flexDirection = 'column';
+            listContainer.style.gap = '6px';
+            listContainer.style.maxHeight = '180px';
+            listContainer.style.overflowY = 'auto';
+            listContainer.style.paddingRight = '6px';
+            
+            Object.entries(TYPE_COLORS).forEach(([type, color]) => {
+                const item = document.createElement('div');
+                item.style.display = 'flex';
+                item.style.alignItems = 'center';
+                item.style.gap = '8px';
+                item.style.fontSize = '0.8rem';
+                
+                const dot = document.createElement('span');
+                dot.style.display = 'inline-block';
+                dot.style.width = '10px';
+                dot.style.height = '10px';
+                dot.style.borderRadius = '50%';
+                dot.style.backgroundColor = color;
+                dot.style.border = '1px solid rgba(0, 0, 0, 0.05)';
+                
+                const label = document.createElement('span');
+                label.style.color = 'var(--text-muted)';
+                label.textContent = type.charAt(0).toUpperCase() + type.slice(1);
+                
+                item.appendChild(dot);
+                item.appendChild(label);
+                listContainer.appendChild(item);
+            });
+            legendPanel.appendChild(listContainer);
+        }
+
+        loadGraphData().then(({ nodes, links }) => {
+            allNodes = nodes;
+            gFullNodes = nodes;
+            gFullLinks = links;
+            
+            // 计算每个节点的连接度数 (degree)
+            const degreeMap = {};
+            nodes.forEach(n => {
+                degreeMap[n.id] = 0;
+            });
+            links.forEach(l => {
+                const s = typeof l.source === 'object' ? l.source.id : l.source;
+                const t = typeof l.target === 'object' ? l.target.id : l.target;
+                if (degreeMap[s] !== undefined) degreeMap[s]++;
+                if (degreeMap[t] !== undefined) degreeMap[t]++;
+            });
+            nodes.forEach(n => {
+                n.degree = degreeMap[n.id] || 0;
+            });
+
+            updateLegend();
+
+            const elem = document.getElementById('graph-container');
+            graph = ForceGraph()(elem)
+                .graphData({ nodes, links })
+                .nodeId('id')
+                .d3VelocityDecay(0.6)
+                .d3AlphaDecay(0.01)
+                .nodeVal(node => GRAPH_CONFIG.nodeBaseSize + Math.sqrt(node.degree || 0) * GRAPH_CONFIG.nodeValMultiplier)
+                .nodeLabel(node => `${node.title} (${node.type})`)
+                .linkDirectionalArrowLength(4)
+                .linkDirectionalArrowRelPos(1)
+                .linkDirectionalParticles(link => showParticles ? 2 : 0)
+                .linkDirectionalParticleSpeed(0.0015)
+                .linkDirectionalParticleWidth(3)
+                .nodeCanvasObject((node, ctx, globalScale) => {
+                    const label = node.title || node.id;
+                    const size = GRAPH_CONFIG.nodeBaseSize + Math.sqrt(node.degree || 0) * GRAPH_CONFIG.nodeValMultiplier;
+                    
+                    const typeKey = (node.type || '').toLowerCase();
+                    const color = TYPE_COLORS[typeKey] || '#94a3b8';
+                    
+                    // 悬停高亮逻辑
+                    const isMuted = highlightNode && !highlightNeighbors.has(node.id) && highlightNode.id !== node.id;
+                    
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, size, 0, 2 * Math.PI, false);
+                    
+                    if (isMuted) {
+                        ctx.fillStyle = 'rgba(148, 163, 184, 0.15)'; // Muted nodes in dark mode
+                    } else {
+                        ctx.fillStyle = color;
+                        if (highlightNode && highlightNode.id === node.id) {
+                            ctx.shadowColor = color;
+                            ctx.shadowBlur = 12;
+                        } else {
+                            ctx.shadowBlur = 4; // Add a persistent slight glow to all nodes in dark mode
+                            ctx.shadowColor = color;
+                        }
+                    }
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                    
+                    if (!isMuted) {
+                        ctx.strokeStyle = '#0f172a';
+                        ctx.lineWidth = highlightNode && highlightNode.id === node.id ? 2.0 : 1.0;
+                        ctx.stroke();
+                    }
+                    
+                    if (globalScale > 1.0) {
+                        const fontSize = 10 / globalScale;
+                        ctx.font = `500 ${fontSize}px 'Poppins', Sans-Serif`;
+                        ctx.textAlign = 'center';
+                        ctx.textBaseline = 'top';
+                        ctx.fillStyle = isMuted ? 'rgba(148, 163, 184, 0.4)' : '#f8fafc';
+                        ctx.fillText(label, node.x, node.y + size + 4);
+                    }
+                })
+                .onNodeHover(node => {
+                    highlightNode = node;
+                    highlightNeighbors.clear();
+                    highlightLinks.clear();
+                    
+                    if (node) {
+                        highlightNeighbors.add(node.id);
+                        links.forEach(link => {
+                            const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
+                            const targetId = typeof link.target === 'object' ? link.target.id : link.target;
+                            if (sourceId === node.id) {
+                                highlightNeighbors.add(targetId);
+                                highlightLinks.add(link);
+                            } else if (targetId === node.id) {
+                                highlightNeighbors.add(sourceId);
+                                highlightLinks.add(link);
+                            }
+                        });
+                    }
+                    
+                    elem.style.cursor = node ? 'pointer' : null;
+                    if (graph && typeof graph.refresh === 'function') {
+                        graph.refresh();
+                    }
+                })
+                .linkWidth(link => highlightLinks.has(link) ? 2.0 : 0.8)
+                .linkColor(link => highlightLinks.has(link) ? 'rgba(227, 98, 93, 0.8)' : 'rgba(148, 163, 184, 0.15)')
+                .linkDirectionalParticleColor(() => 'rgba(227, 98, 93, 0.8)')
+                .onNodeClick(node => {
+                    setTimeout(() => { selectNode(node.id); }, 50);
+                });
+
+            // Set initial force parameters
+            if (graph.d3Force('charge')) {
+                graph.d3Force('charge').strength(-200);
+            }
+            if (graph.d3Force('link')) {
+                const getDegree = node => {
+                    if (typeof node === 'object') return node.degree || 0;
+                    return degreeMap[node] || 0;
+                };
+                graph.d3Force('link')
+                     .distance(80)
+                     .strength(link => {
+                         const sDeg = getDegree(link.source);
+                         const tDeg = getDegree(link.target);
+                         return 0.5 / Math.sqrt((sDeg || 1) * (tDeg || 1));
+                     });
+            }
+            if (typeof d3 !== 'undefined') {
+                graph.d3Force('collide', d3.forceCollide(node => (GRAPH_CONFIG.nodeBaseSize + Math.sqrt(node.degree || 0) * GRAPH_CONFIG.nodeValMultiplier) + GRAPH_CONFIG.collisionPadding));
+            }
+
+            setupFilterUI();
+            applyFilters();
+
+
+
+            // Particles Toggle
+            const particlesToggle = document.getElementById('particles-toggle');
+            particlesToggle.addEventListener('change', (e) => {
+                showParticles = e.target.checked;
+                graph.linkDirectionalParticles(link => showParticles ? 2 : 0);
+            });
+
+            // Physics Sliders
+            const chargeSlider = document.getElementById('charge-slider');
+            const chargeVal = document.getElementById('charge-val');
+            const linkSlider = document.getElementById('link-slider');
+            const linkVal = document.getElementById('link-val');
+
+            const triggerLayoutUpdate = () => {
+                if (graph) {
+                    graph.d3ReheatSimulation();
+                }
+            };
+
+            chargeSlider.addEventListener('input', (e) => {
+                const val = parseInt(e.target.value);
+                chargeVal.textContent = val;
+                if (graph && graph.d3Force('charge')) {
+                    graph.d3Force('charge').strength(val);
+                    triggerLayoutUpdate();
+                }
+            });
+
+            linkSlider.addEventListener('input', (e) => {
+                const val = parseInt(e.target.value);
+                linkVal.textContent = val;
+                if (graph && graph.d3Force('link')) {
+                    graph.d3Force('link').distance(val);
+                    triggerLayoutUpdate();
+                }
+            });
+
+            const physicsToggle = document.getElementById('physics-toggle');
+            physicsToggle.addEventListener('click', () => {
+                if (isPhysicsRunning) {
+                    graph.pauseAnimation();
+                    physicsToggle.textContent = '释放布局 (Release)';
+                    physicsToggle.style.backgroundColor = '#d97757';
+                    physicsToggle.style.color = '#ffffff';
+                    physicsToggle.style.borderColor = '#d97757';
+                } else {
+                    graph.resumeAnimation();
+                    physicsToggle.textContent = '固定布局 (Freeze)';
+                    physicsToggle.style.backgroundColor = '#faf9f5';
+                    physicsToggle.style.color = '#141413';
+                    physicsToggle.style.borderColor = 'var(--panel-border)';
+                }
+                isPhysicsRunning = !isPhysicsRunning;
+            });
+
+            // Fuzzy Search and Autocomplete
+            const searchInput = document.getElementById('search-input');
+            const searchResults = document.getElementById('search-results');
+            const searchClear = document.getElementById('search-clear');
+
+            searchInput.addEventListener('input', (e) => {
+                const query = e.target.value.trim().toLowerCase();
+                if (!query) {
+                    searchResults.style.display = 'none';
+                    searchClear.style.display = 'none';
+                    return;
+                }
+                searchClear.style.display = 'block';
+
+                const matches = allNodes.filter(node => {
+                    const titleMatch = node.title && node.title.toLowerCase().includes(query);
+                    const idMatch = node.id && node.id.toLowerCase().includes(query);
+                    const aliasMatch = node.aliases && node.aliases.some(alias => alias.toLowerCase().includes(query));
+                    return titleMatch || idMatch || aliasMatch;
+                }).slice(0, 10);
+
+                if (matches.length > 0) {
+                    searchResults.innerHTML = matches.map(node => {
+                        const typeColor = TYPE_COLORS[(node.type || '').toLowerCase()] || '#94a3b8';
+                        return `
+                            <div class="search-item" data-node-id="${node.id}" style="padding: 8px 12px; border-bottom: 1px solid rgba(0, 0, 0, 0.05); display: flex; align-items: center; justify-content: space-between; cursor: pointer;">
+                                <div style="display: flex; flex-direction: column; gap: 2px;">
+                                    <span style="font-size: 0.85rem; color: var(--text-main); font-weight: 500;">${node.title || node.id}</span>
+                                    <span style="font-size: 0.7rem; color: var(--text-muted);">${node.id}</span>
+                                </div>
+                                <span style="font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; background: ${typeColor}15; color: ${typeColor}; border: 1px solid ${typeColor}33;">${node.type || 'unknown'}</span>
+                            </div>
+                        `;
+                    }).join('');
+                    searchResults.style.display = 'block';
+                } else {
+                    searchResults.innerHTML = `<div style="padding: 10px; font-size: 0.8rem; color: var(--text-muted); text-align: center;">无匹配结果</div>`;
+                    searchResults.style.display = 'block';
+                }
+            });
+
+            searchInput.addEventListener('focus', () => {
+                if (searchInput.value.trim()) {
+                    searchResults.style.display = 'block';
+                }
+            });
+
+            searchResults.addEventListener('click', (e) => {
+                const item = e.target.closest('.search-item');
+                if (item) {
+                    const nodeId = item.getAttribute('data-node-id');
+                    const node = allNodes.find(n => n.id === nodeId);
+                    if (node) {
+                        searchInput.value = node.title || node.id;
+                        searchResults.style.display = 'none';
+                        selectNode(nodeId);
+                    }
+                }
+            });
+
+            searchClear.addEventListener('click', () => {
+                searchInput.value = '';
+                searchResults.style.display = 'none';
+                searchClear.style.display = 'none';
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('#search-input') && !e.target.closest('#search-results')) {
+                    searchResults.style.display = 'none';
+                }
+            });
+            window.graph = graph;
+        }).catch(err => {
+            console.error("加载图谱数据失败:", err);
+        });
+    </script>
+</body>
+</html>

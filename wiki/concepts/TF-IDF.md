@@ -1,0 +1,22 @@
+---
+type: concept
+title: TF-IDF
+definition: 'type: articlesummary title: Cool Papers + 站内搜索的一些新尝试 articleid: "10311"
+  sourceurl: https://spaces.ac.cn/archives/10311 date: 2024-08-12 category: Big-Data
+  sourcemarkdown: Data/Spacesaccn/markdown/Big-Data/2024-08-12-Cool-Papers-站内搜索-的一些新尝试.md
+  sou'
+sources:
+- spaces_ac_cn/markdown/Big-Data/2024-08-12-Cool-Papers-站内搜索-的一些新尝试.md
+source_ids:
+- '10311'
+aliases:
+- term frequency-inverse document frequency
+status: draft
+updated: '2026-06-12'
+---
+
+# TF-IDF
+
+## 定义
+
+--- type: articlesummary title: Cool Papers + 站内搜索的一些新尝试 articleid: "10311" sourceurl: https://spaces.ac.cn/archives/10311 date: 2024-08-12 category: Big-Data sourcemarkdown: Data/Spacesaccn/markdown/Big-Data/2024-08-12-Cool-Papers-站内搜索-的一些新尝试.md sou

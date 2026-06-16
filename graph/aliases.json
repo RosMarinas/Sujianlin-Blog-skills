@@ -1,0 +1,2815 @@
+{
+  "Aux Loss": [
+    "concept::Aux Loss负载均衡",
+    "formula::Aux Loss负载均衡公式"
+  ],
+  "Batch Size scaling": [
+    "concept::学习率-Batch Size尺度律"
+  ],
+  "Beyond MuP": [
+    "series::MuP之上"
+  ],
+  "EMA": [
+    "concept::EMA等效批量放大",
+    "formula::EMA等效Batch Size公式",
+    "concept::权重滑动平均",
+    "formula::权重滑动平均公式"
+  ],
+  "Fine-Grained Expert": [
+    "concept::Fine-Grained Expert"
+  ],
+  "HiPPO": [
+    "concept::HiPPO矩阵"
+  ],
+  "HiPPO-LegS": [
+    "concept::HiPPO-LegS",
+    "formula::HiPPO-LegS矩阵公式"
+  ],
+  "Linear Decay": [
+    "formula::线性衰减学习率"
+  ],
+  "Loss-Free": [
+    "concept::Loss-Free偏置",
+    "formula::Loss-Free偏置更新"
+  ],
+  "MQB": [
+    "concept::Moving Quantile Balancing",
+    "formula::MQB分桶EMA公式"
+  ],
+  "MoE": [
+    "topic::MoE路由与负载均衡",
+    "series::MoE环游记"
+  ],
+  "MoE routing": [
+    "topic::MoE路由与负载均衡"
+  ],
+  "MoE环游记": [
+    "series::MoE环游记",
+    "reading_path::MoE环游记阅读路径"
+  ],
+  "Moving Quantile Balancing": [
+    "concept::Moving Quantile Balancing"
+  ],
+  "MuP": [
+    "topic::矩阵优化",
+    "method::用稳定性指标约束优化器缩放"
+  ],
+  "MuP之上": [
+    "series::MuP之上"
+  ],
+  "Muon": [
+    "topic::矩阵优化",
+    "series::基于流式幂迭代的Muon实现",
+    "formula::Muon更新公式"
+  ],
+  "PMI": [
+    "concept::点互信息PMI"
+  ],
+  "PMI word embeddings": [
+    "method::用互信息内积构造词向量几何"
+  ],
+  "Pointwise Mutual Information": [
+    "concept::点互信息PMI"
+  ],
+  "QB": [
+    "concept::Quantile Balancing",
+    "formula::QB分位数偏置公式"
+  ],
+  "Quantile Balancing": [
+    "concept::Quantile Balancing"
+  ],
+  "RFT": [
+    "concept::有理传递函数",
+    "formula::有理传递函数公式"
+  ],
+  "RMS": [
+    "concept::RMS尺度"
+  ],
+  "RTF": [
+    "concept::有理传递函数",
+    "formula::有理传递函数公式"
+  ],
+  "Rational Transfer Function": [
+    "concept::有理传递函数"
+  ],
+  "S4": [
+    "concept::S4卷积核生成函数"
+  ],
+  "SGD-SDE": [
+    "concept::SGD-SDE近似",
+    "formula::SGD-SDE近似公式"
+  ],
+  "SSM": [
+    "topic::状态空间模型数学基础",
+    "series::重温SSM"
+  ],
+  "SVD分解": [
+    "series::SVD分解",
+    "concept::奇异值分解"
+  ],
+  "SVD的导数": [
+    "article::10878",
+    "concept::SVD可导性"
+  ],
+  "SVD矩阵分解": [
+    "topic::SVD矩阵分解"
+  ],
+  "Scientific Alchemy SGD": [
+    "series::让炼丹更科学一些"
+  ],
+  "Shared Expert": [
+    "concept::Shared Expert"
+  ],
+  "Spectral Norm": [
+    "concept::谱范数",
+    "formula::谱范数定义"
+  ],
+  "Stiefel": [
+    "concept::Stiefel流形约束"
+  ],
+  "Streaming Power Iteration": [
+    "concept::流式幂迭代",
+    "series::基于流式幂迭代的Muon实现"
+  ],
+  "Surge": [
+    "concept::Surge现象"
+  ],
+  "Warmup-Decay": [
+    "formula::Warmup-Decay最优学习率"
+  ],
+  "last iterate": [
+    "concept::SGD终点损失收敛"
+  ],
+  "load balance": [
+    "concept::MoE负载均衡"
+  ],
+  "mean field": [
+    "concept::平均场近似学习率分析",
+    "method::用平均场近似替代复杂期望计算"
+  ],
+  "msign": [
+    "concept::矩阵符号函数",
+    "formula::msign导数求解公式"
+  ],
+  "simpler GloVe": [
+    "series::更别致的词向量模型"
+  ],
+  "singular value entropy": [
+    "concept::奇异值熵"
+  ],
+  "优化动力学": [
+    "topic::优化动力学",
+    "series::从动力学角度看优化算法"
+  ],
+  "切空间投影": [
+    "concept::切空间投影",
+    "method::用切空间投影改写约束最速下降"
+  ],
+  "动态专家激活": [
+    "concept::动态专家激活"
+  ],
+  "友矩阵": [
+    "concept::友矩阵",
+    "formula::友矩阵公式"
+  ],
+  "奇异值熵": [
+    "concept::奇异值熵",
+    "proposition::奇异值熵不必最大化"
+  ],
+  "学习率与Batch Size": [
+    "series::重新思考学习率与Batch Size",
+    "concept::学习率-Batch Size尺度律"
+  ],
+  "对偶梯度下降": [
+    "method::用对偶目标求解约束更新系数",
+    "concept::核范数对偶目标"
+  ],
+  "对角加低秩": [
+    "concept::对角加低秩分解",
+    "formula::对角加低秩分解公式",
+    "method::对角加低秩与Woodbury加速"
+  ],
+  "对角加低秩分解": [
+    "concept::对角加低秩分解",
+    "formula::对角加低秩分解公式"
+  ],
+  "有理生成函数": [
+    "concept::有理传递函数",
+    "formula::有理传递函数公式"
+  ],
+  "梯度流": [
+    "concept::梯度流",
+    "formula::梯度流ODE公式"
+  ],
+  "流式幂迭代": [
+    "concept::流式幂迭代",
+    "series::基于流式幂迭代的Muon实现"
+  ],
+  "流形最速下降": [
+    "series::流形上的最速下降",
+    "concept::流形最速下降"
+  ],
+  "矩阵优化": [
+    "topic::矩阵优化"
+  ],
+  "科学炼丹": [
+    "series::让炼丹更科学一些"
+  ],
+  "线性自编码器": [
+    "concept::线性自编码器-SVD等价"
+  ],
+  "谱范数": [
+    "concept::谱范数",
+    "formula::谱范数定义"
+  ],
+  "重温SSM": [
+    "series::重温SSM"
+  ],
+  "高斯整数": [
+    "concept::高斯整数"
+  ],
+  "艾森斯坦整数": [
+    "concept::艾森斯坦整数"
+  ],
+  "唯一分解整环": [
+    "concept::唯一分解整环"
+  ],
+  "无穷下降法": [
+    "concept::无穷下降法",
+    "method::无穷下降法"
+  ],
+  "勾股数": [
+    "concept::本原勾股数"
+  ],
+  "费马平方和定理": [
+    "concept::费马平方和定理"
+  ],
+  "有理点": [
+    "concept::有理点"
+  ],
+  "切割线法": [
+    "concept::切割线法",
+    "method::切割线法"
+  ],
+  "切线法": [
+    "concept::切线法",
+    "method::切线法"
+  ],
+  "从费马大定理谈起": [
+    "series::从费马大定理谈起"
+  ],
+  "Fermat Last Theorem": [
+    "series::从费马大定理谈起"
+  ],
+  "矩阵符号函数": [
+    "concept::矩阵符号函数"
+  ],
+  "mclip": [
+    "concept::奇异值裁剪(mclip)"
+  ],
+  "奇异值裁剪": [
+    "concept::奇异值裁剪(mclip)"
+  ],
+  "Newton-Schulz": [
+    "concept::Newton-Schulz迭代"
+  ],
+  "最小熵原理": [
+    "concept::最小熵原理",
+    "series::最小熵原理"
+  ],
+  "Minimum Entropy": [
+    "concept::最小熵原理"
+  ],
+  "句模版": [
+    "concept::句模版"
+  ],
+  "社区发现": [
+    "concept::社区发现"
+  ],
+  "InfoMap": [
+    "concept::社区发现"
+  ],
+  "能量视角下的GAN模型": [
+    "series::能量视角下的GAN模型"
+  ],
+  "CoSENT": [
+    "series::CoSENT"
+  ],
+  "多任务学习漫谈": [
+    "series::多任务学习漫谈"
+  ],
+  "MHA": [
+    "concept::多头注意力"
+  ],
+  "MQA": [
+    "concept::多查询注意力"
+  ],
+  "GQA": [
+    "concept::分组查询注意力"
+  ],
+  "MLA": [
+    "concept::多头潜在注意力"
+  ],
+  "最大熵原理": [
+    "concept::最大熵原理"
+  ],
+  "最大熵模型": [
+    "concept::最大熵模型"
+  ],
+  "路径积分": [
+    "concept::路径积分"
+  ],
+  "Path Integral": [
+    "concept::路径积分"
+  ],
+  "随机游走": [
+    "concept::随机游走扩散极限",
+    "concept::随机游走"
+  ],
+  "布朗运动": [
+    "concept::布朗运动路径概率"
+  ],
+  "路径积分系列": [
+    "series::路径积分系列"
+  ],
+  "Muon优化器赏析": [
+    "article::10592"
+  ],
+  "初探MuP": [
+    "article::10770"
+  ],
+  "MuP初探": [
+    "article::10770"
+  ],
+  "Batch Size学习率": [
+    "article::10542"
+  ],
+  "Muon优化器指南": [
+    "article::11416"
+  ],
+  "仿射坐标系": [
+    "concept::仿射坐标系"
+  ],
+  "张量": [
+    "concept::张量"
+  ],
+  "行列式": [
+    "concept::行列式"
+  ],
+  "有向体积": [
+    "concept::有向体积"
+  ],
+  "相似矩阵": [
+    "concept::相似矩阵"
+  ],
+  "概率生成函数": [
+    "concept::概率生成函数"
+  ],
+  "概率母函数": [
+    "concept::概率生成函数"
+  ],
+  "母函数": [
+    "concept::概率生成函数",
+    "concept::生成函数"
+  ],
+  "母函数方法": [
+    "concept::概率生成函数"
+  ],
+  "特征函数": [
+    "concept::特征函数"
+  ],
+  "随机游动": [
+    "concept::随机游走"
+  ],
+  "醉汉问题": [
+    "concept::随机游走"
+  ],
+  "新理解矩阵": [
+    "series::新理解矩阵"
+  ],
+  "当概率遇上复变": [
+    "series::当概率遇上复变"
+  ],
+  "黎曼度量": [
+    "concept::黎曼度量"
+  ],
+  "黎曼度规": [
+    "concept::黎曼度量"
+  ],
+  "度规张量": [
+    "concept::黎曼度量"
+  ],
+  "等温度量": [
+    "concept::等温度量"
+  ],
+  "等温度规": [
+    "concept::等温度量"
+  ],
+  "等温坐标系": [
+    "concept::等温度量"
+  ],
+  "等温参数": [
+    "concept::等温度量"
+  ],
+  "测地线": [
+    "concept::测地线"
+  ],
+  "测地曲线": [
+    "concept::测地线"
+  ],
+  "联络": [
+    "concept::联络"
+  ],
+  "联络系数": [
+    "concept::联络"
+  ],
+  "克里斯托费尔符号": [
+    "concept::联络"
+  ],
+  "克氏符号": [
+    "concept::联络"
+  ],
+  "协变导数": [
+    "concept::协变导数"
+  ],
+  "协变微分": [
+    "concept::协变导数"
+  ],
+  "黎曼曲率": [
+    "concept::黎曼曲率"
+  ],
+  "黎曼曲率张量": [
+    "concept::黎曼曲率"
+  ],
+  "曲率张量": [
+    "concept::黎曼曲率"
+  ],
+  "活动正交标架": [
+    "concept::活动正交标架"
+  ],
+  "正交标架": [
+    "concept::活动正交标架"
+  ],
+  "局部正交基": [
+    "concept::活动正交标架"
+  ],
+  "活动标架": [
+    "concept::活动正交标架"
+  ],
+  "微分形式": [
+    "concept::微分形式"
+  ],
+  "微分形式场": [
+    "concept::微分形式"
+  ],
+  "p-形式": [
+    "concept::微分形式"
+  ],
+  "外微分": [
+    "concept::外微分"
+  ],
+  "外微分算子": [
+    "concept::外微分"
+  ],
+  "变分求解联络系数法": [
+    "method::变分求解联络系数法"
+  ],
+  "欧拉-拉格朗日求解克氏符号法": [
+    "method::变分求解联络系数法"
+  ],
+  "SymPy符号计算曲率张量法": [
+    "method::SymPy符号计算曲率张量法"
+  ],
+  "SymPy计算微分几何法": [
+    "method::SymPy符号计算曲率张量法"
+  ],
+  "活动正交标架度规分解法": [
+    "method::活动正交标架度规分解法"
+  ],
+  "度规标架因子分解法": [
+    "method::活动正交标架度规分解法"
+  ],
+  "正交共标架构建法": [
+    "method::活动正交标架度规分解法"
+  ],
+  "外积反对称积分法": [
+    "method::外积反对称积分法"
+  ],
+  "外积守恒律导出法": [
+    "method::外积反对称积分法"
+  ],
+  "反对称积分常数求解": [
+    "method::外积反对称积分法"
+  ],
+  "权重滑动平均": [
+    "concept::权重滑动平均"
+  ],
+  "指数滑动平均": [
+    "concept::权重滑动平均"
+  ],
+  "梯度累积": [
+    "concept::梯度累积"
+  ],
+  "软batch": [
+    "concept::梯度累积"
+  ],
+  "分层学习率": [
+    "concept::分层学习率"
+  ],
+  "谱归一化": [
+    "concept::谱归一化"
+  ],
+  "Adam更新RMS": [
+    "concept::Adam更新RMS"
+  ],
+  "Update RMS": [
+    "concept::Adam更新RMS",
+    "formula::Adam更新均方根公式"
+  ],
+  "Hessian近似自适应学习率": [
+    "concept::Hessian近似自适应学习率"
+  ],
+  "自适应激活函数折叠": [
+    "proposition::自适应激活函数折叠"
+  ],
+  "msign导数之Sylvester方程": [
+    "proposition::msign导数之Sylvester方程"
+  ],
+  "Adam更新均方根与信噪比关系": [
+    "proposition::Adam更新均方根与信噪比关系"
+  ],
+  "梯度平方滑动平均近似对角Hessian": [
+    "proposition::梯度平方滑动平均近似对角Hessian"
+  ],
+  "参数重参数化等效学习率缩放": [
+    "proposition::参数重参数化等效学习率缩放"
+  ],
+  "Match Adam Update RMS迁移法": [
+    "method::MatchAdamUpdateRMS迁移法"
+  ],
+  "Keras梯度累积优化器": [
+    "method::Keras梯度累积优化器"
+  ],
+  "Keras分层学习率包装法": [
+    "method::Keras分层学习率包装法"
+  ],
+  "Keras权重滑动平均注入法": [
+    "method::Keras权重滑动平均注入法"
+  ],
+  "Keras侵入式优化器注入法": [
+    "method::Keras侵入式优化器注入法"
+  ],
+  "Word2Vec": [
+    "concept::Word2Vec"
+  ],
+  "Skip-Gram": [
+    "concept::Skip-Gram"
+  ],
+  "CBOW": [
+    "concept::CBOW"
+  ],
+  "层次Softmax": [
+    "concept::Hierarchical Softmax"
+  ],
+  "Hierarchical Softmax": [
+    "concept::Hierarchical Softmax"
+  ],
+  "Negative Sampling": [
+    "concept::Negative Sampling"
+  ],
+  "负采样": [
+    "concept::Negative Sampling"
+  ],
+  "网页标准模板": [
+    "concept::网页标准模板"
+  ],
+  "例外标签": [
+    "concept::例外标签"
+  ],
+  "差分峰值聚类": [
+    "concept::差分峰值聚类"
+  ],
+  "DGCNN": [
+    "concept::DGCNN"
+  ],
+  "膨胀门卷积神经网络": [
+    "concept::DGCNN"
+  ],
+  "门卷积": [
+    "concept::门卷积"
+  ],
+  "GLU": [
+    "concept::门卷积",
+    "GLU激活函数"
+  ],
+  "膨胀卷积": [
+    "concept::膨胀卷积"
+  ],
+  "空洞卷积": [
+    "concept::膨胀卷积"
+  ],
+  "加性注意力": [
+    "concept::加性注意力"
+  ],
+  "双标注输出": [
+    "concept::双标注输出"
+  ],
+  "半指针半标注": [
+    "concept::双标注输出"
+  ],
+  "非自回归生成": [
+    "concept::非自回归生成"
+  ],
+  "曝光偏差": [
+    "concept::曝光偏差"
+  ],
+  "【不可思议的Word2Vec】": [
+    "series::【不可思议的Word2Vec】"
+  ],
+  "通用爬虫探索": [
+    "series::通用爬虫探索"
+  ],
+  "基于深度学习的阅读理解问答": [
+    "series::基于深度学习的阅读理解问答"
+  ],
+  "素数": [
+    "concept::素数"
+  ],
+  "质数": [
+    "concept::素数"
+  ],
+  "Prime Number": [
+    "concept::素数"
+  ],
+  "黎曼ζ函数": [
+    "concept::黎曼ζ函数"
+  ],
+  "Riemann zeta function": [
+    "concept::黎曼ζ函数"
+  ],
+  "ζ函数": [
+    "concept::黎曼ζ函数"
+  ],
+  "凸多面体": [
+    "concept::凸多面体"
+  ],
+  "Convex Polyhedron": [
+    "concept::凸多面体"
+  ],
+  "全卷积网络": [
+    "concept::全卷积网络"
+  ],
+  "Fully Convolutional Network": [
+    "concept::全卷积网络"
+  ],
+  "FCN": [
+    "concept::全卷积网络"
+  ],
+  "字标注分词": [
+    "concept::字标注分词"
+  ],
+  "Character tagging segmentation": [
+    "concept::字标注分词"
+  ],
+  "SBME标注法": [
+    "concept::字标注分词"
+  ],
+  "新词发现": [
+    "concept::新词发现"
+  ],
+  "New Word Discovery": [
+    "concept::新词发现"
+  ],
+  "等比级数求和公式": [
+    "formula::等比级数求和公式"
+  ],
+  "欧拉多面体公式": [
+    "formula::欧拉多面体公式"
+  ],
+  "黎曼ζ函数公式": [
+    "formula::黎曼ζ函数公式"
+  ],
+  "欧拉乘积公式": [
+    "formula::欧拉乘积公式"
+  ],
+  "金钥匙公式": [
+    "formula::欧拉乘积公式"
+  ],
+  "Euler Product Formula": [
+    "formula::欧拉乘积公式"
+  ],
+  "素数倒数之和双对数估计": [
+    "formula::素数倒数之和双对数估计"
+  ],
+  "对数积分公式": [
+    "formula::对数积分公式"
+  ],
+  "多阶凝固度公式": [
+    "formula::多阶凝固度公式"
+  ],
+  "素数无穷的欧几里得证明": [
+    "proposition::素数无穷的欧几里得证明"
+  ],
+  "素数无穷的欧拉证明": [
+    "proposition::素数无穷的欧拉证明"
+  ],
+  "素数倒数之和发散": [
+    "proposition::素数倒数之和发散"
+  ],
+  "素数定理对数积分推导": [
+    "proposition::素数定理对数积分推导"
+  ],
+  "凸多面体公式四面体拼接推导": [
+    "proposition::凸多面体公式四面体拼接推导"
+  ],
+  "素数积加一构造法": [
+    "method::素数积加一构造法"
+  ],
+  "基于生成函数的欧拉乘积展开": [
+    "method::基于生成函数的欧拉乘积展开"
+  ],
+  "基于凸多面体拓扑拼接的示性数计算": [
+    "method::基于凸多面体拓扑拼接的示性数计算"
+  ],
+  "差分近似导数求解连续极限": [
+    "method::差分近似导数求解连续极限"
+  ],
+  "基于全卷积网络的字标注序列建模": [
+    "method::基于全卷积网络的字标注序列建模"
+  ],
+  "基于词表随机组合语料训练": [
+    "method::基于词表随机组合语料训练"
+  ],
+  "多阶凝固度与回溯过滤新词发现": [
+    "method::多阶凝固度与回溯过滤新词发现"
+  ],
+  "向量量化": [
+    "concept::向量量化"
+  ],
+  "Vector Quantization": [
+    "concept::向量量化"
+  ],
+  "VQ": [
+    "concept::向量量化"
+  ],
+  "直通估计器": [
+    "concept::直通估计器"
+  ],
+  "Straight-Through Estimator": [
+    "concept::直通估计器"
+  ],
+  "STE": [
+    "concept::直通估计器",
+    "method::直通估计方法"
+  ],
+  "旋转技巧": [
+    "concept::旋转技巧"
+  ],
+  "Rotation Trick": [
+    "concept::旋转技巧"
+  ],
+  "过参数化": [
+    "concept::过参数化"
+  ],
+  "Overparameterization": [
+    "concept::过参数化"
+  ],
+  "SimVQ": [
+    "concept::SimVQ"
+  ],
+  "梯度裁剪": [
+    "concept::梯度裁剪"
+  ],
+  "Gradient Clipping": [
+    "concept::梯度裁剪"
+  ],
+  "最小作用量原理优化": [
+    "concept::最小作用量原理优化"
+  ],
+  "Least Action Principle for Optimization": [
+    "concept::最小作用量原理优化"
+  ],
+  "Dynamic Tanh": [
+    "concept::Dynamic Tanh"
+  ],
+  "DyT": [
+    "concept::Dynamic Tanh"
+  ],
+  "Dynamic ISRU": [
+    "concept::Dynamic ISRU"
+  ],
+  "DyISRU": [
+    "concept::Dynamic ISRU"
+  ],
+  "MaxLogit爆炸": [
+    "concept::MaxLogit爆炸"
+  ],
+  "MaxLogit Explosion": [
+    "concept::MaxLogit爆炸"
+  ],
+  "DiVeQ": [
+    "concept::DiVeQ"
+  ],
+  "平均场近似": [
+    "concept::平均场近似"
+  ],
+  "mean-field approximation": [
+    "concept::平均场近似"
+  ],
+  "优化器记忆周期": [
+    "concept::优化器记忆周期"
+  ],
+  "Optimizer Memory Horizon": [
+    "concept::优化器记忆周期"
+  ],
+  "EFLA": [
+    "concept::EFLA"
+  ],
+  "Error-Free Linear Attention": [
+    "concept::EFLA"
+  ],
+  "各向同性特征": [
+    "concept::各向同性特征"
+  ],
+  "Isotropic Features": [
+    "concept::各向同性特征"
+  ],
+  "FD Loss": [
+    "concept::FD Loss"
+  ],
+  "Fréchet Distance Loss": [
+    "concept::FD Loss"
+  ],
+  "哈希路由": [
+    "concept::哈希路由"
+  ],
+  "Hash Routing": [
+    "concept::哈希路由"
+  ],
+  "直通估计公式": [
+    "formula::直通估计公式"
+  ],
+  "旋转直通估计公式": [
+    "formula::旋转直通估计公式"
+  ],
+  "旋转变换矩阵公式": [
+    "formula::旋转变换矩阵公式"
+  ],
+  "梯度裁剪更新公式": [
+    "formula::梯度裁剪更新公式"
+  ],
+  "最小作用量约束优化公式": [
+    "formula::最小作用量约束优化公式"
+  ],
+  "奇异值熵公式": [
+    "formula::奇异值熵公式"
+  ],
+  "RMSNorm雅可比矩阵公式": [
+    "formula::RMSNorm雅可比矩阵公式"
+  ],
+  "QK-Clip更新公式": [
+    "formula::QK-Clip更新公式"
+  ],
+  "DiVeQ重参数更新公式": [
+    "formula::DiVeQ重参数更新公式"
+  ],
+  "最优优化器调度公式": [
+    "formula::最优优化器调度公式"
+  ],
+  "EFLA递归更新公式": [
+    "formula::EFLA递归更新公式"
+  ],
+  "FD损失公式": [
+    "formula::FD损失公式"
+  ],
+  "FD损失梯度公式": [
+    "formula::FD损失梯度公式"
+  ],
+  "梯度裁剪默认模长为1的合理性": [
+    "proposition::梯度裁剪默认模长为1的合理性"
+  ],
+  "Muon是谱范数下的最速下降": [
+    "proposition::Muon是谱范数下的最速下降"
+  ],
+  "DiVeQ等效隐式AuxLoss证明": [
+    "proposition::DiVeQ等效隐式AuxLoss证明"
+  ],
+  "常数权重衰减下最优学习率解": [
+    "proposition::常数权重衰减下最优学习率解"
+  ],
+  "比例权重衰减下最优学习率与权重衰减解": [
+    "proposition::比例权重衰减下最优学习率与权重衰减解"
+  ],
+  "DeltaNet特征值界约束": [
+    "proposition::DeltaNet特征值界约束"
+  ],
+  "各向同性对齐参数与特征最速下降": [
+    "proposition::各向同性对齐参数与特征最速下降"
+  ],
+  "VQ旋转直通估计法": [
+    "method::VQ旋转直通估计法"
+  ],
+  "编码表线性变换过参数化法": [
+    "method::编码表线性变换过参数化法"
+  ],
+  "基于内积自适应步长裁剪法": [
+    "method::基于内积自适应步长裁剪法"
+  ],
+  "Update RMS 对齐法": [
+    "method::Update RMS 对齐法"
+  ],
+  "对角雅可比梯度近似法": [
+    "method::对角雅可比梯度近似法"
+  ],
+  "QK-Clip权重裁剪法": [
+    "method::QK-Clip权重裁剪法"
+  ],
+  "MuonClip优化方法": [
+    "method::MuonClip优化方法"
+  ],
+  "DiVeQ无辅助损失量化训练法": [
+    "method::DiVeQ无辅助损失量化训练法"
+  ],
+  "平均场优化器动力学分析法": [
+    "method::平均场优化器动力学分析法"
+  ],
+  "最优学习率与权重衰减调度法": [
+    "method::最优学习率与权重衰减调度法"
+  ],
+  "连续动力学精确解递归法": [
+    "method::连续动力学精确解递归法"
+  ],
+  "最速下降双层对齐法": [
+    "method::最速下降双层对齐法"
+  ],
+  "FD损失流式训练法": [
+    "method::FD损失流式训练法"
+  ],
+  "贪心负载均衡表生成法": [
+    "method::贪心负载均衡表生成法"
+  ],
+  "多Gram哈希路由法": [
+    "method::多Gram哈希路由法"
+  ],
+  "向量量化优化": [
+    "topic::向量量化优化"
+  ],
+  "优化器稳定性与自适应机制": [
+    "topic::优化器稳定性与自适应机制"
+  ],
+  "让MathJax更好地兼容谷歌翻译和延时加载": [
+    "article::10320"
+  ],
+  "近乎完美地解决MathJax与Marked的冲突": [
+    "article::10332"
+  ],
+  "让MathJax的数学公式随窗口大小自动缩放": [
+    "article::10474"
+  ],
+  "Softmax后传：寻找Top-K的光滑近似": [
+    "article::10373"
+  ],
+  "细水长flow之TARFLOW：流模型满血归来？": [
+    "article::10667"
+  ],
+  "线性注意力简史：从模仿、创新到反哺": [
+    "article::11033"
+  ],
+  "n个正态随机数的最大值的渐近估计": [
+    "article::11390"
+  ],
+  "等值振荡定理：最优多项式逼近的充要条件": [
+    "article::10972"
+  ],
+  "中位数（Median）简介": [
+    "article::11693"
+  ],
+  "三个球的交点坐标（三球交会定位）": [
+    "article::10684"
+  ],
+  "高斯型积分的微扰展开（一）": [
+    "article::3217"
+  ],
+  "高斯型积分的微扰展开（二）": [
+    "article::3241"
+  ],
+  "可微Top-K算子": [
+    "concept::可微Top-K算子"
+  ],
+  "Normalizing Flow": [
+    "concept::Normalizing Flow"
+  ],
+  "流模型": [
+    "concept::Normalizing Flow"
+  ],
+  "可逆流模型": [
+    "concept::Normalizing Flow"
+  ],
+  "仿射耦合层": [
+    "concept::仿射耦合层"
+  ],
+  "Affine Coupling Layer": [
+    "concept::仿射耦合层"
+  ],
+  "TARFLOW": [
+    "concept::TARFLOW"
+  ],
+  "正态随机变量最大值": [
+    "concept::正态随机变量最大值"
+  ],
+  "等值振荡定理": [
+    "concept::等值振荡定理"
+  ],
+  "Equioscillation Theorem": [
+    "concept::等值振荡定理"
+  ],
+  "Chebyshev定理": [
+    "concept::等值振荡定理"
+  ],
+  "Kolmogorov定理": [
+    "concept::Kolmogorov定理"
+  ],
+  "中位数": [
+    "concept::中位数"
+  ],
+  "Median": [
+    "concept::中位数"
+  ],
+  "50%分位数": [
+    "concept::中位数"
+  ],
+  "几何中位数": [
+    "concept::几何中位数"
+  ],
+  "Geometric Median": [
+    "concept::几何中位数"
+  ],
+  "Fermat点": [
+    "concept::几何中位数"
+  ],
+  "坐标中位数": [
+    "concept::坐标中位数"
+  ],
+  "Coordinate-wise Median": [
+    "concept::坐标中位数"
+  ],
+  "三球交会定位": [
+    "concept::三球交会定位"
+  ],
+  "Trilateration": [
+    "concept::三球交会定位"
+  ],
+  "三球定位": [
+    "concept::三球交会定位"
+  ],
+  "GradTopK公式": [
+    "formula::GradTopK公式"
+  ],
+  "ThreTopK公式": [
+    "formula::ThreTopK公式"
+  ],
+  "ThreTopK解析解公式": [
+    "formula::ThreTopK解析解公式"
+  ],
+  "多块自回归耦合层公式": [
+    "formula::多块自回归耦合层公式"
+  ],
+  "流模型最优去噪估计公式": [
+    "formula::流模型最优去噪估计公式"
+  ],
+  "正态随机数最大值期望渐近估计公式": [
+    "formula::正态随机数最大值期望渐近估计公式"
+  ],
+  "无穷范数方向导数公式": [
+    "formula::无穷范数方向导数公式"
+  ],
+  "中位数优化表征": [
+    "formula::中位数优化表征"
+  ],
+  "几何中位数定义": [
+    "formula::几何中位数定义"
+  ],
+  "Weiszfeld迭代公式": [
+    "formula::Weiszfeld迭代公式"
+  ],
+  "三球交会一般坐标系转换公式": [
+    "formula::三球交会一般坐标系转换公式"
+  ],
+  "高阶指数微扰展开公式": [
+    "formula::高阶指数微扰展开公式"
+  ],
+  "ThreTopK梯度隐式微分公式": [
+    "proposition::ThreTopK梯度隐式微分公式"
+  ],
+  "流模型最优去噪命题": [
+    "proposition::流模型最优去噪命题"
+  ],
+  "正态随机数最大值期望渐近估计上界": [
+    "proposition::正态随机数最大值期望渐近估计上界"
+  ],
+  "最优多项式逼近唯一性": [
+    "proposition::最优多项式逼近唯一性"
+  ],
+  "Kolmogorov定理充要条件": [
+    "proposition::Kolmogorov定理充要条件"
+  ],
+  "stop_gradient自定义反向传播": [
+    "method::stop_gradient自定义反向传播"
+  ],
+  "stop_gradient gradient override": [
+    "method::stop_gradient自定义反向传播"
+  ],
+  "sg自定义梯度": [
+    "method::stop_gradient自定义反向传播"
+  ],
+  "MathJax翻译与延时加载兼容方法": [
+    "method::MathJax翻译与延时加载兼容方法"
+  ],
+  "MathJax与Marked解析冲突解决方案": [
+    "method::MathJax与Marked解析冲突解决方案"
+  ],
+  "MathJax公式自适应窗口大小缩放方案": [
+    "method::MathJax公式自适应窗口大小缩放方案"
+  ],
+  "二分法求解待定阈值": [
+    "method::二分法求解待定阈值"
+  ],
+  "流模型去噪采样": [
+    "method::流模型去噪采样"
+  ],
+  "拉普拉斯近似": [
+    "method::拉普拉斯近似"
+  ],
+  "Laplace Approximation": [
+    "method::拉普拉斯近似"
+  ],
+  "Weiszfeld迭代法": [
+    "method::Weiszfeld迭代法"
+  ],
+  "Weiszfeld algorithm": [
+    "method::Weiszfeld迭代法"
+  ],
+  "建立局部正交基简化几何问题": [
+    "method::建立局部正交基简化几何问题"
+  ],
+  "指数变系数展开法": [
+    "method::指数变系数展开法"
+  ],
+  "变系数展开": [
+    "method::指数变系数展开法"
+  ],
+  "指数微扰展开": [
+    "method::指数变系数展开法"
+  ],
+  "高阶摄动级数逐阶消零法": [
+    "method::高阶摄动级数逐阶消零法"
+  ],
+  "网页翻译与延时加载兼容实现": [
+    "example::网页翻译与延时加载兼容实现"
+  ],
+  "Marked与MathJax解析冲突修复": [
+    "example::Marked与MathJax解析冲突修复"
+  ],
+  "网页数学公式自适应窗口缩放": [
+    "example::网页数学公式自适应窗口缩放"
+  ],
+  "ThreTopK解析解推导": [
+    "example::ThreTopK解析解推导"
+  ],
+  "TARFLOW自回归流采样与去噪": [
+    "example::TARFLOW自回归流采样与去噪"
+  ],
+  "DeltaNet核技巧反哺": [
+    "example::DeltaNet核技巧反哺"
+  ],
+  "正态最大值期望Jensen不等式上界": [
+    "example::正态最大值期望Jensen不等式上界"
+  ],
+  "最优多项式逼近等值振荡点证明": [
+    "example::最优多项式逼近等值振荡点证明"
+  ],
+  "高维空间几何中位数Weiszfeld迭代": [
+    "example::高维空间几何中位数Weiszfeld迭代"
+  ],
+  "三球交会定位计算流程": [
+    "example::三球交会定位计算流程"
+  ],
+  "高斯型积分一阶指数变系数展开": [
+    "example::高斯型积分一阶指数变系数展开"
+  ],
+  "高斯型积分高阶指数变系数展开": [
+    "example::高斯型积分高阶指数变系数展开"
+  ],
+  "摄动法": [
+    "concept::摄动法"
+  ],
+  "微扰理论": [
+    "concept::摄动法"
+  ],
+  "长期项": [
+    "concept::长期项"
+  ],
+  "久期项": [
+    "concept::长期项"
+  ],
+  "算子法求解线性常微分方程": [
+    "concept::算子法求解线性常微分方程"
+  ],
+  "对易子": [
+    "concept::对易子"
+  ],
+  "Riccati方程": [
+    "concept::Riccati方程"
+  ],
+  "一阶微分形式不变性": [
+    "concept::一阶微分形式不变性"
+  ],
+  "狄拉克函数": [
+    "concept::狄拉克函数"
+  ],
+  "Dirac delta": [
+    "concept::狄拉克函数",
+    "concept::狄拉克函数光滑近似"
+  ],
+  "二次型化简": [
+    "concept::二次型化简"
+  ],
+  "复数化简二次曲线": [
+    "concept::复数化简二次曲线"
+  ],
+  "傅里叶级数": [
+    "concept::傅里叶级数"
+  ],
+  "GAN-QP": [
+    "concept::GAN-QP平方势散度",
+    "formula::GAN-QP平方势散度公式",
+    "method::用对偶散度构造对抗生成目标"
+  ],
+  "WGAN-div": [
+    "concept::WGAN-div",
+    "formula::WGAN-div目标公式"
+  ],
+  "RSGAN": [
+    "concept::相对判别器",
+    "formula::RSGAN相对判别目标公式"
+  ],
+  "Linear Attention": [
+    "concept::线性化Attention",
+    "formula::线性Attention结合律公式",
+    "method::用结构约束线性化Attention计算"
+  ],
+  "Nyströmformer": [
+    "concept::Nyströmformer",
+    "formula::Nyströmformer三矩阵近似公式"
+  ],
+  "Attention-E": [
+    "method::Attention-E熵不变性缩放",
+    "formula::Attention-E熵不变性缩放公式"
+  ],
+  "GAU": [
+    "concept::GAU",
+    "concept::Gated Attention Unit"
+  ],
+  "RoPE": [
+    "concept::RoPE相对位置编码"
+  ],
+  "Rotary Position Embedding": [
+    "concept::RoPE相对位置编码"
+  ],
+  "旋转式位置编码": [
+    "concept::RoPE相对位置编码"
+  ],
+  "Wasserstein距离": [
+    "concept::Wasserstein距离"
+  ],
+  "Wasserstein Distance": [
+    "concept::Wasserstein距离"
+  ],
+  "Earth Mover's Distance": [
+    "concept::Wasserstein距离"
+  ],
+  "Earth Mover Distance": [
+    "concept::Wasserstein距离"
+  ],
+  "推土机距离": [
+    "concept::Wasserstein距离"
+  ],
+  "W距离": [
+    "concept::Wasserstein距离"
+  ],
+  "EMD": [
+    "concept::Wasserstein距离"
+  ],
+  "Wasserstein distance": [
+    "concept::Wasserstein距离"
+  ],
+  "Wasserstein gradient flow": [
+    "method::Wasserstein梯度流"
+  ],
+  "WGF": [
+    "method::Wasserstein梯度流"
+  ],
+  "msign算子": [
+    "concept::矩阵符号函数"
+  ],
+  "matrix sign function": [
+    "concept::矩阵符号函数"
+  ],
+  "maximum-entropy": [
+    "concept::最大熵原理"
+  ],
+  "MaxEnt": [
+    "concept::最大熵原理"
+  ],
+  "Lipschitz continuity": [
+    "concept::Lipschitz约束"
+  ],
+  "Decoder-only": [
+    "concept::Decoder-only架构"
+  ],
+  "Decoder-only架构": [
+    "concept::Decoder-only架构"
+  ],
+  "Causal Transformer": [
+    "concept::Decoder-only架构"
+  ],
+  "自回归语言模型": [
+    "concept::Decoder-only架构"
+  ],
+  "LRU": [
+    "concept::LRU"
+  ],
+  "Linear Recurrent Unit": [
+    "concept::LRU"
+  ],
+  "线性循环单元": [
+    "concept::LRU"
+  ],
+  "SLRU": [
+    "concept::SLRU"
+  ],
+  "Simpler Linear Recurrent Unit": [
+    "concept::SLRU"
+  ],
+  "简化线性循环单元": [
+    "concept::SLRU"
+  ],
+  "NBCE": [
+    "concept::NBCE"
+  ],
+  "基于朴素贝叶斯的上下文扩展": [
+    "concept::NBCE"
+  ],
+  "RoPE-Bias": [
+    "concept::RoPE-Bias"
+  ],
+  "旋转位置编码加偏置": [
+    "concept::RoPE-Bias"
+  ],
+  "Attention信息熵": [
+    "concept::Attention信息熵"
+  ],
+  "注意力分布熵": [
+    "concept::Attention信息熵"
+  ],
+  "Attention Sparsity": [
+    "concept::Attention Sparsity"
+  ],
+  "注意力稀疏性": [
+    "concept::Attention Sparsity"
+  ],
+  "Lion优化器": [
+    "concept::Lion优化器"
+  ],
+  "Lion": [
+    "concept::Lion优化器"
+  ],
+  "EvoLved Sign Momentum": [
+    "concept::Lion优化器"
+  ],
+  "Tiger优化器": [
+    "concept::Tiger优化器"
+  ],
+  "Tiger": [
+    "concept::Tiger优化器"
+  ],
+  "Tight-fisted Optimizer": [
+    "concept::Tiger优化器"
+  ],
+  "Embedding过度更新": [
+    "concept::Embedding过度更新"
+  ],
+  "Embedding过度更新问题": [
+    "concept::Embedding过度更新"
+  ],
+  "Embedding over-update": [
+    "concept::Embedding过度更新"
+  ],
+  "有限标量量化": [
+    "concept::有限标量量化"
+  ],
+  "FSQ": [
+    "concept::有限标量量化"
+  ],
+  "Finite Scalar Quantization": [
+    "concept::有限标量量化"
+  ],
+  "Transformer-VQ": [
+    "concept::Transformer-VQ"
+  ],
+  "VQ-based Linear Attention": [
+    "concept::Transformer-VQ"
+  ],
+  "辛普森悖论": [
+    "concept::辛普森悖论"
+  ],
+  "Simpson's paradox": [
+    "concept::辛普森悖论"
+  ],
+  "半指针-半标注": [
+    "concept::半指针-半标注"
+  ],
+  "semi-pointer semi-annotation": [
+    "concept::半指针-半标注"
+  ],
+  "指针标注": [
+    "concept::半指针-半标注"
+  ],
+  "字词混合Embedding": [
+    "concept::字词混合Embedding"
+  ],
+  "word-character hybrid embedding": [
+    "concept::字词混合Embedding"
+  ],
+  "混合Embedding": [
+    "concept::字词混合Embedding"
+  ],
+  "实体链接": [
+    "concept::实体链接"
+  ],
+  "Entity Linking": [
+    "concept::实体链接"
+  ],
+  "实体消歧": [
+    "concept::实体链接"
+  ],
+  "前缀树约束解码": [
+    "concept::前缀树约束解码"
+  ],
+  "Trie-constrained decoding": [
+    "concept::前缀树约束解码"
+  ],
+  "前缀解码": [
+    "concept::前缀树约束解码"
+  ],
+  "完全子图": [
+    "concept::完全子图"
+  ],
+  "Complete Graph": [
+    "concept::完全子图"
+  ],
+  "团": [
+    "concept::完全子图"
+  ],
+  "Clique": [
+    "concept::完全子图"
+  ],
+  "Efficient GlobalPointer": [
+    "concept::Efficient GlobalPointer"
+  ],
+  "门控指针改进版": [
+    "concept::Efficient GlobalPointer"
+  ],
+  "标注行为建模": [
+    "concept::标注行为建模"
+  ],
+  "标注轨迹建模": [
+    "concept::标注行为建模"
+  ],
+  "基于概率分解的关系抽取": [
+    "method::基于概率分解的关系抽取"
+  ],
+  "基于描述文本匹配的实体链接": [
+    "method::基于描述文本匹配的实体链接"
+  ],
+  "基于前缀树约束的Seq2Seq解码": [
+    "method::基于前缀树约束的Seq2Seq解码"
+  ],
+  "基于完全子图搜索的事件划分": [
+    "method::基于完全子图搜索的事件划分"
+  ],
+  "基于条件LayerNorm的实体关系抽取": [
+    "method::基于条件LayerNorm的实体关系抽取"
+  ],
+  "GlobalPointer": [
+    "method::GlobalPointer",
+    "concept::GlobalPointer"
+  ],
+  "联合抽取": [
+    "topic::联合抽取"
+  ],
+  "GlobalPointer与联合抽取": [
+    "series::GlobalPointer与联合抽取"
+  ],
+  "Attention低秩瓶颈": [
+    "concept::Attention Low Rank Bottleneck"
+  ],
+  "low rank bottleneck": [
+    "concept::Attention Low Rank Bottleneck"
+  ],
+  "Talking-Heads": [
+    "concept::Talking-Heads Attention"
+  ],
+  "Synthesizer": [
+    "concept::Google Synthesizer"
+  ],
+  "T-TA": [
+    "concept::T-TA (Transformer-based Text Autoencoder)"
+  ],
+  "门控注意力单元": [
+    "concept::Gated Attention Unit"
+  ],
+  "MCA": [
+    "concept::Mixed Chunk Attention"
+  ],
+  "分块混合注意力": [
+    "concept::Mixed Chunk Attention"
+  ],
+  "RoFormerV2": [
+    "concept::RoFormerV2"
+  ],
+  "Pre-LN": [
+    "concept::Pre-Norm vs Post-Norm"
+  ],
+  "Post-LN": [
+    "concept::Pre-Norm vs Post-Norm",
+    "concept::PostNorm梯度消失"
+  ],
+  "绝对位置编码": [
+    "concept::Absolute Positional Encoding"
+  ],
+  "相对位置编码": [
+    "concept::Relative Positional Encoding"
+  ],
+  "l2归一化": [
+    "concept::l2 Attention Normalization"
+  ],
+  "球面文本嵌入": [
+    "concept::球面文本嵌入"
+  ],
+  "Joint Spherical Embedding": [
+    "concept::球面文本嵌入"
+  ],
+  "JoSE": [
+    "concept::球面文本嵌入"
+  ],
+  "球面文本表征": [
+    "concept::球面文本嵌入"
+  ],
+  "UniLM": [
+    "concept::UniLM"
+  ],
+  "Unified Language Model": [
+    "concept::UniLM"
+  ],
+  "统一预训练语言模型": [
+    "concept::UniLM"
+  ],
+  "SimBERT": [
+    "concept::SimBERT"
+  ],
+  "SimBERTv1": [
+    "concept::SimBERT"
+  ],
+  "RoFormer-Sim": [
+    "concept::RoFormer-Sim"
+  ],
+  "SimBERTv2": [
+    "concept::RoFormer-Sim"
+  ],
+  "RoFormer-Sim-FT": [
+    "concept::RoFormer-Sim"
+  ],
+  "句向量各向异性": [
+    "concept::句向量各向异性"
+  ],
+  "句向量各向异性问题": [
+    "concept::句向量各向异性"
+  ],
+  "Anisotropy in Sentence Embeddings": [
+    "concept::句向量各向异性"
+  ],
+  "各向异性": [
+    "concept::句向量各向异性"
+  ],
+  "BERT-whitening": [
+    "concept::BERT-whitening"
+  ],
+  "BERT白化": [
+    "concept::BERT-whitening"
+  ],
+  "句向量白化": [
+    "concept::BERT-whitening"
+  ],
+  "FlatNCE": [
+    "concept::FlatNCE"
+  ],
+  "FlatNCE Loss": [
+    "concept::FlatNCE"
+  ],
+  "FlatCLR": [
+    "concept::FlatNCE"
+  ],
+  "测地线距离": [
+    "concept::测地线距离"
+  ],
+  "Geodesic Distance": [
+    "concept::测地线距离"
+  ],
+  "流形语义距离": [
+    "concept::测地线距离"
+  ],
+  "LSH": [
+    "concept::LSH"
+  ],
+  "Locality Sensitive Hashing": [
+    "concept::LSH"
+  ],
+  "局部敏感哈希": [
+    "concept::LSH"
+  ],
+  "符号哈希": [
+    "concept::LSH"
+  ],
+  "FlyHash": [
+    "concept::FlyHash"
+  ],
+  "果蝇哈希": [
+    "concept::FlyHash"
+  ],
+  "FlyHash-WTA": [
+    "concept::FlyHash"
+  ],
+  "BioHash": [
+    "concept::BioHash"
+  ],
+  "Bio-Inspired Hashing": [
+    "concept::BioHash"
+  ],
+  "球面向量梯度更新修正": [
+    "method::球面向量梯度更新修正"
+  ],
+  "球面梯度修正": [
+    "method::球面向量梯度更新修正"
+  ],
+  "JoSE梯度更新": [
+    "method::球面向量梯度更新修正"
+  ],
+  "UniLM自回归掩码编码": [
+    "method::UniLM自回归掩码编码"
+  ],
+  "UniLM注意力掩码": [
+    "method::UniLM自回归掩码编码"
+  ],
+  "自回归掩码注意力": [
+    "method::UniLM自回归掩码编码"
+  ],
+  "句向量对比学习分类训练": [
+    "method::句向量对比学习分类训练"
+  ],
+  "Batch Softmax对比学习": [
+    "method::句向量对比学习分类训练"
+  ],
+  "句向量Batch分类训练": [
+    "method::句向量对比学习分类训练"
+  ],
+  "BART式带噪重构": [
+    "method::BART式带噪重构"
+  ],
+  "带噪输入重构": [
+    "method::BART式带噪重构"
+  ],
+  "BART生成加噪": [
+    "method::BART式带噪重构"
+  ],
+  "句向量相似度几何蒸馏": [
+    "method::句向量相似度几何蒸馏"
+  ],
+  "相似度矩阵蒸馏": [
+    "method::句向量相似度几何蒸馏"
+  ],
+  "Similarity Matrix Distillation": [
+    "method::句向量相似度几何蒸馏"
+  ],
+  "BERT-whitening变换": [
+    "method::BERT-whitening变换"
+  ],
+  "句向量白化变换": [
+    "method::BERT-whitening变换"
+  ],
+  "协方差白化去冗余": [
+    "method::BERT-whitening变换"
+  ],
+  "超参数化BERT-whitening": [
+    "method::超参数化BERT-whitening"
+  ],
+  "超参化白化": [
+    "method::超参数化BERT-whitening"
+  ],
+  "保真特征旋转降维": [
+    "method::超参数化BERT-whitening"
+  ],
+  "LSH随机投影二值化": [
+    "method::LSH随机投影二值化"
+  ],
+  "LSH符号哈希": [
+    "method::LSH随机投影二值化"
+  ],
+  "超平面随机划分哈希": [
+    "method::LSH随机投影二值化"
+  ],
+  "FlyHash二值化": [
+    "method::FlyHash二值化"
+  ],
+  "果蝇嗅觉哈希": [
+    "method::FlyHash二值化"
+  ],
+  "随机稀疏投影WTA哈希": [
+    "method::FlyHash二值化"
+  ],
+  "BioHash二值化": [
+    "method::BioHash二值化"
+  ],
+  "BioWord哈希二值化": [
+    "method::BioHash二值化"
+  ],
+  "聚类中心基底投影WTA": [
+    "method::BioHash二值化"
+  ],
+  "对比学习梯度累加等效变换": [
+    "method::对比学习梯度累加等效变换"
+  ],
+  "InfoNCE梯度累加等效": [
+    "method::对比学习梯度累加等效变换"
+  ],
+  "对比学习两阶段梯度计算": [
+    "method::对比学习梯度累加等效变换"
+  ],
+  "FlatNCE损失计算": [
+    "method::FlatNCE损失计算"
+  ],
+  "FlatCLR损失函数": [
+    "method::FlatNCE损失计算"
+  ],
+  "ANNCUR检索加速": [
+    "method::ANNCUR检索加速"
+  ],
+  "ANNCUR": [
+    "method::ANNCUR检索加速"
+  ],
+  "CUR检索加速": [
+    "method::ANNCUR检索加速"
+  ],
+  "Cross-Encoder检索优化": [
+    "method::ANNCUR检索加速"
+  ],
+  "近似测地线距离计算": [
+    "method::近似测地线距离计算"
+  ],
+  "离散图测地距离": [
+    "method::近似测地线距离计算"
+  ],
+  "语义流形图最短路径": [
+    "method::近似测地线距离计算"
+  ],
+  "Sentence-BERT训练与拼接特征": [
+    "method::Sentence-BERT训练与拼接特征"
+  ],
+  "SBERT拼接训练": [
+    "method::Sentence-BERT训练与拼接特征"
+  ],
+  "SBERT特征拼接法": [
+    "method::Sentence-BERT训练与拼接特征"
+  ],
+  "Additive Coupling Layer": [
+    "concept::加性耦合层"
+  ],
+  "加性耦合层": [
+    "concept::加性耦合层"
+  ],
+  "加性耦合变换": [
+    "concept::加性耦合层"
+  ],
+  "Invertible Residual Networks": [
+    "concept::可逆残差网络"
+  ],
+  "i-ResNet": [
+    "concept::可逆残差网络"
+  ],
+  "可逆残差网络": [
+    "concept::可逆残差网络"
+  ],
+  "Conditional Flow": [
+    "concept::条件流"
+  ],
+  "条件流": [
+    "concept::条件流"
+  ],
+  "条件流模型": [
+    "concept::条件流"
+  ],
+  "Flow-based Variational Autoencoders": [
+    "concept::f-VAEs"
+  ],
+  "基于流的变分自编码器": [
+    "concept::f-VAEs"
+  ],
+  "Invertible 1x1 Convolution": [
+    "concept::可逆1x1卷积"
+  ],
+  "可逆1x1卷积": [
+    "concept::可逆1x1卷积"
+  ],
+  "Multi-scale Architecture": [
+    "concept::多尺度结构"
+  ],
+  "多尺度结构": [
+    "concept::多尺度结构"
+  ],
+  "Activation Normalization": [
+    "concept::Actnorm"
+  ],
+  "Jacobian Log-Series Expansion": [
+    "concept::雅可比对数级数展开"
+  ],
+  "雅可比对数级数展开": [
+    "concept::雅可比对数级数展开"
+  ],
+  "门控卷积网络": [
+    "concept::门控卷积网络"
+  ],
+  "GCNN": [
+    "concept::门控卷积网络"
+  ],
+  "Gated Convolutional Network": [
+    "concept::门控卷积网络"
+  ],
+  "变分信息瓶颈": [
+    "concept::变分信息瓶颈"
+  ],
+  "VIB": [
+    "concept::变分信息瓶颈"
+  ],
+  "Variational Information Bottleneck": [
+    "concept::变分信息瓶颈"
+  ],
+  "矢量量化自编码器": [
+    "concept::矢量量化自编码器"
+  ],
+  "VQ-VAE": [
+    "concept::矢量量化自编码器"
+  ],
+  "Vector Quantised-VAE": [
+    "concept::矢量量化自编码器"
+  ],
+  "分层变分自编码器": [
+    "concept::分层变分自编码器"
+  ],
+  "HVAE": [
+    "concept::分层变分自编码器"
+  ],
+  "Hierarchical VAE": [
+    "concept::分层变分自编码器"
+  ],
+  "NVAE": [
+    "concept::分层变分自编码器"
+  ],
+  "多尺度变分自编码": [
+    "concept::多尺度变分自编码"
+  ],
+  "Multi-scale VAE": [
+    "concept::多尺度变分自编码"
+  ],
+  "直通估计方法": [
+    "method::直通估计方法"
+  ],
+  "Straight-Through Estimation": [
+    "method::直通估计方法"
+  ],
+  "门控卷积序列建模": [
+    "method::门控卷积序列建模"
+  ],
+  "GCNN序列建模": [
+    "method::门控卷积序列建模"
+  ],
+  "变分信息瓶颈法": [
+    "method::变分信息瓶颈法"
+  ],
+  "VIB正则化": [
+    "method::变分信息瓶颈法"
+  ],
+  "分层变分自编码相对参数化": [
+    "method::分层变分自编码相对参数化"
+  ],
+  "Relative Parameterization Method": [
+    "method::分层变分自编码相对参数化"
+  ],
+  "多尺度注意力掩码自编码": [
+    "method::多尺度注意力掩码自编码"
+  ],
+  "UniVAE注意力掩码": [
+    "method::多尺度注意力掩码自编码"
+  ],
+  "变分信息瓶颈损失公式": [
+    "formula::变分信息瓶颈损失公式"
+  ],
+  "VIB Loss": [
+    "formula::变分信息瓶颈损失公式"
+  ],
+  "正态分布角插值公式": [
+    "formula::正态分布角插值公式"
+  ],
+  "SLERP": [
+    "formula::正态分布角插值公式"
+  ],
+  "球面线性插值": [
+    "formula::正态分布角插值公式"
+  ],
+  "矢量量化重构损失公式": [
+    "formula::矢量量化重构损失公式"
+  ],
+  "VQ-VAE Loss": [
+    "formula::矢量量化重构损失公式"
+  ],
+  "相对参数化均值方差公式": [
+    "formula::相对参数化均值方差公式"
+  ],
+  "NVAE 相对参数化建模": [
+    "formula::相对参数化均值方差公式"
+  ],
+  "矩阵Capsule": [
+    "concept::矩阵Capsule"
+  ],
+  "高斯混合模型": [
+    "concept::高斯混合模型"
+  ],
+  "GMM": [
+    "concept::高斯混合模型"
+  ],
+  "非方阵的行列式": [
+    "concept::非方阵的行列式"
+  ],
+  "矩阵指数": [
+    "concept::矩阵指数"
+  ],
+  "EM路由算法": [
+    "method::EM路由算法"
+  ],
+  "det(exp(A)) = exp(Tr(A))": [
+    "formula::矩阵指数行列式恒等式"
+  ],
+  "Hubness现象": [
+    "concept::Hubness现象"
+  ],
+  "聚集现象": [
+    "concept::Hubness现象"
+  ],
+  "Johnson-Lindenstrauss引理": [
+    "concept::Johnson-Lindenstrauss引理"
+  ],
+  "JL引理": [
+    "concept::Johnson-Lindenstrauss引理"
+  ],
+  "JL Lemma": [
+    "concept::Johnson-Lindenstrauss引理"
+  ],
+  "正交矩阵近似": [
+    "concept::正交矩阵近似"
+  ],
+  "高维正交近似": [
+    "concept::正交矩阵近似"
+  ],
+  "自正交化正则化": [
+    "method::自正交化正则化"
+  ],
+  "基于几何视角的参数初始化": [
+    "method::基于几何视角的参数初始化"
+  ],
+  "随机投影降维": [
+    "method::随机投影降维"
+  ],
+  "基于几何平均的方差初始化": [
+    "method::基于几何平均的方差初始化"
+  ],
+  "基于Hub值的采样筛选": [
+    "method::基于Hub值的采样筛选"
+  ],
+  "函数光滑化": [
+    "concept::函数光滑化"
+  ],
+  "函数光滑化与数学逼近": [
+    "topic::函数光滑化与数学逼近"
+  ],
+  "狄拉克函数光滑近似": [
+    "concept::狄拉克函数光滑近似"
+  ],
+  "Minimax误差优化": [
+    "concept::Minimax误差优化"
+  ],
+  "Chebyshev approximation": [
+    "concept::Minimax误差优化"
+  ],
+  "正定泰勒多项式": [
+    "concept::正定泰勒多项式"
+  ],
+  "傅里叶级数概率密度": [
+    "concept::傅里叶级数概率密度"
+  ],
+  "FBDM": [
+    "concept::傅里叶级数概率密度",
+    "method::傅里叶级数非负概率密度构造法"
+  ],
+  "LogSumExp": [
+    "formula::logsumexp算子"
+  ],
+  "Softmax": [
+    "formula::SoftMax作为onehot_argmax的光滑近似"
+  ],
+  "Taylor-Softmax": [
+    "formula::Taylor-SoftMax公式"
+  ],
+  "Mitchell近似": [
+    "formula::Mitchell近似对数公式",
+    "article::Mitchell近似：乘法变为加法，误差不超过1/9"
+  ],
+  "SquarePlus": [
+    "formula::SquarePlus公式",
+    "article::SquarePlus：可能是运算最简单的ReLU光滑近似"
+  ],
+  "GELU": [
+    "formula::GELU双曲正切近似公式",
+    "article::GELU的两个初等函数近似是怎么来的"
+  ],
+  "SoftPlus": [
+    "example::狄拉克构造ReLU光滑近似"
+  ],
+  "条件随机场": [
+    "concept::条件随机场"
+  ],
+  "线性链CRF": [
+    "concept::线性链CRF"
+  ],
+  "Exposure Bias": [
+    "concept::Exposure Bias"
+  ],
+  "Teacher Forcing": [
+    "concept::Teacher Forcing"
+  ],
+  "束搜索": [
+    "concept::束搜索"
+  ],
+  "自回归生成模型": [
+    "concept::自回归生成模型"
+  ],
+  "重复解码": [
+    "concept::重复解码"
+  ],
+  "双向解码": [
+    "concept::双向解码"
+  ],
+  "PEGASUS预训练": [
+    "concept::PEGASUS预训练"
+  ],
+  "mixup正则化": [
+    "concept::mixup正则化"
+  ],
+  "mixup augmentation": [
+    "concept::mixup正则化"
+  ],
+  "对抗训练": [
+    "concept::对抗训练"
+  ],
+  "Adversarial Training": [
+    "concept::对抗训练"
+  ],
+  "FGM": [
+    "method::用快速梯度法进行对抗训练",
+    "concept::对抗训练"
+  ],
+  "梯度惩罚": [
+    "concept::梯度惩罚"
+  ],
+  "Gradient Penalty": [
+    "concept::梯度惩罚"
+  ],
+  "梯度截断": [
+    "concept::梯度裁剪"
+  ],
+  "(L0,L1)-smooth": [
+    "concept::(L0,L1)-光滑性"
+  ],
+  "广义L光滑性": [
+    "concept::(L0,L1)-光滑性"
+  ],
+  "权重尺度偏移不变性": [
+    "concept::权重尺度偏移不变性"
+  ],
+  "WEISSI": [
+    "concept::权重尺度偏移不变性",
+    "method::基于权重尺度偏移不变性的正则化"
+  ],
+  "策略梯度": [
+    "concept::策略梯度"
+  ],
+  "Policy Gradient": [
+    "concept::策略梯度"
+  ],
+  "零阶优化": [
+    "concept::零阶优化"
+  ],
+  "Zeroth-Order Optimization": [
+    "concept::零阶优化"
+  ],
+  "RNN梯度消失": [
+    "concept::RNN梯度消失"
+  ],
+  "Vanishing Gradient": [
+    "concept::RNN梯度消失"
+  ],
+  "RNN梯度爆炸": [
+    "concept::RNN梯度爆炸"
+  ],
+  "Exploding Gradient": [
+    "concept::RNN梯度爆炸"
+  ],
+  "LSTM门控": [
+    "concept::LSTM门控机制"
+  ],
+  "遗忘门": [
+    "concept::LSTM门控机制"
+  ],
+  "Gradient Accumulation": [
+    "concept::梯度累积"
+  ],
+  "Margin Softmax": [
+    "concept::Margin Softmax"
+  ],
+  "AM-Softmax": [
+    "concept::Margin Softmax"
+  ],
+  "Warmup": [
+    "concept::Warmup训练策略"
+  ],
+  "学习率预热": [
+    "concept::Warmup训练策略"
+  ],
+  "logsumexp": [
+    "concept::logsumexp运算"
+  ],
+  "Log-Sum-Exp": [
+    "concept::logsumexp运算"
+  ],
+  "输入梯度惩罚": [
+    "concept::输入梯度惩罚",
+    "concept::梯度惩罚"
+  ],
+  "Input Gradient Penalty": [
+    "concept::输入梯度惩罚"
+  ],
+  "参数梯度惩罚": [
+    "concept::参数梯度惩罚"
+  ],
+  "Parameter Gradient Penalty": [
+    "concept::参数梯度惩罚"
+  ],
+  "PostNorm": [
+    "concept::PostNorm梯度消失"
+  ],
+  "Lookahead": [
+    "concept::Lookahead优化器"
+  ],
+  "LazyOptimizer": [
+    "concept::LazyOptimizer"
+  ],
+  "线性正则化": [
+    "method::用数据混合实现线性正则化"
+  ],
+  "对抗训练FGM": [
+    "method::用快速梯度法进行对抗训练"
+  ],
+  "优化与损失函数": [
+    "topic::优化与损失函数"
+  ],
+  "Optimization and Loss Functions": [
+    "topic::优化与损失函数"
+  ],
+  "Gaussian Integer": [
+    "concept::高斯整数"
+  ],
+  "Z[i]": [
+    "concept::高斯整数"
+  ],
+  "高斯整数环": [
+    "concept::高斯整数"
+  ],
+  "Unique Factorization Domain": [
+    "concept::唯一分解整环"
+  ],
+  "UFD": [
+    "concept::唯一分解整环"
+  ],
+  "唯一分解环": [
+    "concept::唯一分解整环"
+  ],
+  "Eisenstein Integer": [
+    "concept::艾森斯坦整数"
+  ],
+  "Z[ω]": [
+    "concept::艾森斯坦整数"
+  ],
+  "三次分圆整数": [
+    "concept::艾森斯坦整数"
+  ],
+  "Fermat's Theorem on Sums of Two Squares": [
+    "concept::费马平方和定理"
+  ],
+  "Fermat's Two-Square Theorem": [
+    "concept::费马平方和定理"
+  ],
+  "费马两平方定理": [
+    "concept::费马平方和定理"
+  ],
+  "Infinite Descent": [
+    "concept::无穷下降法"
+  ],
+  "无穷递降法": [
+    "concept::无穷下降法"
+  ],
+  "Chord and Tangent Method": [
+    "concept::切割线法"
+  ],
+  "Secant Method": [
+    "concept::切割线法"
+  ],
+  "割线法": [
+    "concept::切割线法"
+  ],
+  "Norm (Number Theory)": [
+    "concept::范数(数论)"
+  ],
+  "数论范数": [
+    "concept::范数(数论)"
+  ],
+  "范数(数论)": [
+    "concept::范数(数论)"
+  ],
+  "Number Theory": [
+    "topic::数论"
+  ],
+  "数论": [
+    "topic::数论"
+  ],
+  "Algebraic Number Theory": [
+    "topic::代数数论"
+  ],
+  "代数数论": [
+    "topic::代数数论"
+  ],
+  "Fermat's Last Theorem Series": [
+    "series::从费马大定理谈起"
+  ],
+  "费马大定理系列": [
+    "series::从费马大定理谈起"
+  ],
+  "Taxicab Number": [
+    "example::1729的士数"
+  ],
+  "1729": [
+    "example::1729的士数"
+  ],
+  "参数微分法": [
+    "concept::参数微分法"
+  ],
+  "含参变量微分法": [
+    "concept::参数微分法"
+  ],
+  "参数求导法": [
+    "concept::参数微分法"
+  ],
+  "积分符号内取微分": [
+    "concept::参数微分法"
+  ],
+  "费曼积分技巧": [
+    "concept::参数微分法"
+  ],
+  "特征线法": [
+    "concept::特征线法"
+  ],
+  "特征线方法": [
+    "concept::特征线法"
+  ],
+  "格林函数": [
+    "concept::格林函数"
+  ],
+  "Green函数": [
+    "concept::格林函数"
+  ],
+  "高斯-博内公式": [
+    "concept::高斯-博内公式"
+  ],
+  "Gauss-Bonnet公式": [
+    "concept::高斯-博内公式"
+  ],
+  "Gauss-Bonnet定理": [
+    "concept::高斯-博内公式"
+  ],
+  "微分几何": [
+    "concept::微分几何"
+  ],
+  "Differential geometry": [
+    "concept::微分几何"
+  ],
+  "外微分计算": [
+    "concept::外微分计算"
+  ],
+  "外微分演算": [
+    "concept::外微分计算"
+  ],
+  "Exterior calculus": [
+    "concept::外微分计算"
+  ],
+  "参数微分法（方法）": [
+    "method::参数微分法"
+  ],
+  "Feynman integration": [
+    "method::参数微分法"
+  ],
+  "Differentiation under integral": [
+    "method::参数微分法"
+  ],
+  "Cartan结构方程法": [
+    "method::外微分结构方程法"
+  ],
+  "活动标架法": [
+    "method::外微分结构方程法"
+  ],
+  "外微分结构方程": [
+    "method::外微分结构方程法"
+  ],
+  "Maupertuis几何化": [
+    "method::力学几何化方法"
+  ],
+  "Jacobi度量法": [
+    "method::力学几何化方法"
+  ],
+  "傅里叶变换": [
+    "concept::傅里叶变换"
+  ],
+  "Fourier Transform": [
+    "concept::傅里叶变换"
+  ],
+  "洛朗展式": [
+    "concept::洛朗展式"
+  ],
+  "Laurent Series": [
+    "concept::洛朗展式"
+  ],
+  "生成函数": [
+    "concept::生成函数"
+  ],
+  "Generating Function": [
+    "concept::生成函数"
+  ],
+  "整数分拆": [
+    "concept::整数分拆"
+  ],
+  "Integer Partition": [
+    "concept::整数分拆"
+  ],
+  "伯努利数": [
+    "concept::伯努利数"
+  ],
+  "Bernoulli Numbers": [
+    "concept::伯努利数"
+  ],
+  "差分算符": [
+    "concept::差分算符"
+  ],
+  "Difference Operator": [
+    "concept::差分算符"
+  ],
+  "伽马函数": [
+    "concept::伽马函数"
+  ],
+  "Gamma Function": [
+    "concept::伽马函数"
+  ],
+  "勒贝格控制收敛定理": [
+    "concept::勒贝格控制收敛定理"
+  ],
+  "Lebesgue Dominated Convergence Theorem": [
+    "concept::勒贝格控制收敛定理"
+  ],
+  "勒贝格积分": [
+    "concept::勒贝格积分"
+  ],
+  "Lebesgue Integral": [
+    "concept::勒贝格积分"
+  ],
+  "伯努利级数": [
+    "concept::伯努利级数"
+  ],
+  "Basel Problem": [
+    "concept::伯努利级数"
+  ],
+  "渐近级数": [
+    "concept::渐近级数"
+  ],
+  "Asymptotic Series": [
+    "concept::渐近级数"
+  ],
+  "斯特灵公式": [
+    "concept::斯特灵公式"
+  ],
+  "Stirling Formula": [
+    "concept::斯特灵公式"
+  ],
+  "Stirling Approximation": [
+    "concept::斯特灵公式"
+  ],
+  "Perturbation Method": [
+    "concept::摄动法"
+  ],
+  "差分方程": [
+    "concept::差分方程"
+  ],
+  "Difference Equation": [
+    "concept::差分方程"
+  ],
+  "黎曼积分": [
+    "concept::黎曼积分"
+  ],
+  "Riemann Integral": [
+    "concept::黎曼积分"
+  ],
+  "Dirac Delta": [
+    "concept::狄拉克函数"
+  ],
+  "Delta Function": [
+    "concept::狄拉克函数"
+  ],
+  "魏尔斯特拉斯定理": [
+    "concept::魏尔斯特拉斯定理"
+  ],
+  "Weierstrass Approximation Theorem": [
+    "concept::魏尔斯特拉斯定理"
+  ],
+  "标准正交基": [
+    "concept::标准正交基"
+  ],
+  "Orthonormal Basis": [
+    "concept::标准正交基"
+  ],
+  "Fourier Series": [
+    "concept::傅里叶级数"
+  ],
+  "勒让德多项式": [
+    "concept::勒让德多项式"
+  ],
+  "Legendre Polynomials": [
+    "concept::勒让德多项式"
+  ],
+  "EM算法": [
+    "concept::EM算法"
+  ],
+  "Expectation-Maximization": [
+    "concept::EM算法"
+  ],
+  "最大期望算法": [
+    "concept::EM算法"
+  ],
+  "梯度下降": [
+    "concept::梯度下降"
+  ],
+  "Gradient Descent": [
+    "concept::梯度下降"
+  ],
+  "最大似然": [
+    "concept::最大似然"
+  ],
+  "Maximum Likelihood": [
+    "concept::最大似然"
+  ],
+  "MLE": [
+    "concept::最大似然"
+  ],
+  "马尔可夫过程": [
+    "concept::马尔可夫过程"
+  ],
+  "Markov Process": [
+    "concept::马尔可夫过程"
+  ],
+  "主方程": [
+    "concept::主方程"
+  ],
+  "Master Equation": [
+    "concept::主方程"
+  ],
+  "Method of Characteristics": [
+    "concept::特征线法"
+  ],
+  "KL散度": [
+    "concept::KL散度"
+  ],
+  "KL Divergence": [
+    "concept::KL散度"
+  ],
+  "Kullback-Leibler Divergence": [
+    "concept::KL散度"
+  ],
+  "隐变量": [
+    "concept::隐变量"
+  ],
+  "Latent Variable": [
+    "concept::隐变量"
+  ],
+  "Series Expansion Approximation": [
+    "method::级数展开逼近"
+  ],
+  "级数展开逼近": [
+    "method::级数展开逼近"
+  ],
+  "生成函数法": [
+    "method::生成函数法"
+  ],
+  "Generating Function Method": [
+    "method::生成函数法"
+  ],
+  "算符形式泰勒展开法": [
+    "method::算符形式泰勒展开法"
+  ],
+  "Operator Taylor Expansion": [
+    "method::算符形式泰勒展开法"
+  ],
+  "傅里叶变换求解函数方程法": [
+    "method::傅里叶变换求解函数方程法"
+  ],
+  "Fourier Method for Functional Equations": [
+    "method::傅里叶变换求解函数方程法"
+  ],
+  "欧拉无穷韦达定理法": [
+    "method::欧拉无穷韦达定理法"
+  ],
+  "Euler Infinite Vieta Method": [
+    "method::欧拉无穷韦达定理法"
+  ],
+  "隐式修正函数法": [
+    "method::隐式修正函数法"
+  ],
+  "Implicit Correction Function Method": [
+    "method::隐式修正函数法"
+  ],
+  "拉普拉斯方法": [
+    "method::拉普拉斯方法/鞍点法"
+  ],
+  "Laplace Method": [
+    "method::拉普拉斯方法/鞍点法"
+  ],
+  "Saddle Point Method": [
+    "method::拉普拉斯方法/鞍点法"
+  ],
+  "参数量纲引入法": [
+    "method::参数量纲引入法"
+  ],
+  "Parameter Scaling Method": [
+    "method::参数量纲引入法"
+  ],
+  "差分方程摄动展开法": [
+    "method::差分方程摄动展开法"
+  ],
+  "Perturbation Expansion for Difference Equations": [
+    "method::差分方程摄动展开法"
+  ],
+  "值域划分法": [
+    "method::值域划分法"
+  ],
+  "Range Partition Method": [
+    "method::值域划分法"
+  ],
+  "遗忘假设平滑法": [
+    "method::遗忘假设平滑法"
+  ],
+  "Forgetting Hypothesis Smoothing": [
+    "method::遗忘假设平滑法"
+  ],
+  "狄拉克核逼近法": [
+    "method::狄拉克核逼近法"
+  ],
+  "Dirac Kernel Approximation": [
+    "method::狄拉克核逼近法"
+  ],
+  "近似曲线迭代法": [
+    "method::近似曲线迭代法"
+  ],
+  "Surrogate Function Iteration": [
+    "method::近似曲线迭代法"
+  ],
+  "主方程推导法": [
+    "method::主方程推导法"
+  ],
+  "Master Equation Derivation": [
+    "method::主方程推导法"
+  ],
+  "KL散度交替最小化EM法": [
+    "method::KL散度交替最小化EM法"
+  ],
+  "KL Alternating Minimization EM": [
+    "method::KL散度交替最小化EM法"
+  ],
+  "傅里叶变换对": [
+    "formula::傅里叶变换对"
+  ],
+  "Fourier Transform Pair": [
+    "formula::傅里叶变换对"
+  ],
+  "斯特灵级数": [
+    "formula::斯特灵级数"
+  ],
+  "Stirling Series": [
+    "formula::斯特灵级数"
+  ],
+  "主方程标准形式": [
+    "formula::主方程标准形式"
+  ],
+  "Master Equation Standard Form": [
+    "formula::主方程标准形式"
+  ],
+  "Basel问题欧拉解法": [
+    "example::spaces-3680-Basel问题欧拉解法"
+  ],
+  "非线性差分隐式解Mathematica实现": [
+    "example::spaces-3696-非线性差分隐式解Mathematica实现"
+  ],
+  "阻滞增长摄动修正": [
+    "example::spaces-3889-阻滞增长摄动修正"
+  ],
+  "pLSA的EM算法推导": [
+    "example::spaces-4277-pLSA的EM算法推导"
+  ],
+  "KMeans的EM推导": [
+    "example::spaces-4277-KMeans的EM推导"
+  ],
+  "特征线法PDE求解": [
+    "example::spaces-4718-特征线法PDE求解"
+  ],
+  "Keras Custom Loss": [
+    "Keras自定义Loss模式"
+  ],
+  "Keras loss as output": [
+    "Keras自定义Loss模式"
+  ],
+  "Keras triplet loss pattern": [
+    "Keras自定义Loss模式"
+  ],
+  "Keras自定义损失模式": [
+    "Keras自定义Loss模式"
+  ],
+  "标签平滑": [
+    "Label Smoothing"
+  ],
+  "Label Smoothing": [
+    "Label Smoothing"
+  ],
+  "标签平滑正则化": [
+    "Label Smoothing"
+  ],
+  "标签平滑交叉熵": [
+    "Label Smoothing"
+  ],
+  "中心损失": [
+    "Center Loss"
+  ],
+  "Center Loss with Embedding": [
+    "Center Loss"
+  ],
+  "聚类中心损失": [
+    "Center Loss"
+  ],
+  "Gated Linear Unit": [
+    "GLU激活函数"
+  ],
+  "门控线性单元": [
+    "GLU激活函数"
+  ],
+  "GLU gate": [
+    "GLU激活函数"
+  ],
+  "重计算": [
+    "Gradient Checkpointing"
+  ],
+  "梯度检查点": [
+    "Gradient Checkpointing"
+  ],
+  "recompute": [
+    "Gradient Checkpointing"
+  ],
+  "gradient-checkpointing": [
+    "Gradient Checkpointing"
+  ],
+  "检查点重计算": [
+    "Gradient Checkpointing"
+  ],
+  "Keras Layer Reuse": [
+    "Keras层重用"
+  ],
+  "Keras权重共享": [
+    "Keras层重用"
+  ],
+  "Keras Model Reuse": [
+    "Keras层重用"
+  ],
+  "层共享权重": [
+    "Keras层重用"
+  ],
+  "MirroredStrategy": [
+    "tf-distribute"
+  ],
+  "TPUStrategy": [
+    "tf-distribute"
+  ],
+  "多GPU训练": [
+    "tf-distribute"
+  ],
+  "分布式策略": [
+    "tf-distribute"
+  ],
+  "tf.distribute": [
+    "tf-distribute"
+  ],
+  "Cross-Entropy vs Accuracy": [
+    "交叉熵准确率关系"
+  ],
+  "准确率光滑近似": [
+    "交叉熵准确率关系"
+  ],
+  "交叉熵准确率等价性": [
+    "交叉熵准确率关系"
+  ],
+  "损失函数设计原则": [
+    "交叉熵准确率关系"
+  ],
+  "Discriminator-based Validation": [
+    "判别器重要性采样"
+  ],
+  "重要性采样验证集": [
+    "判别器重要性采样"
+  ],
+  "分布偏移校正": [
+    "判别器重要性采样"
+  ],
+  "判别器验证集": [
+    "判别器重要性采样"
+  ],
+  "Multiprocessing Pattern": [
+    "Python多进程模式"
+  ],
+  "Pool+Queue": [
+    "Python多进程模式"
+  ],
+  "多进程任务队列": [
+    "Python多进程模式"
+  ],
+  "Python并行模式": [
+    "Python多进程模式"
+  ],
+  "Large File Shuffle": [
+    "大文件打乱算法"
+  ],
+  "外存打乱": [
+    "大文件打乱算法"
+  ],
+  "基于磁盘的打乱": [
+    "大文件打乱算法"
+  ],
+  "terashuf": [
+    "大文件打乱算法"
+  ],
+  "全局shuffle": [
+    "大文件打乱算法"
+  ],
+  "Word Vector Propagation Clustering": [
+    "传递聚类"
+  ],
+  "种子词扩展": [
+    "传递聚类"
+  ],
+  "连通性聚类": [
+    "传递聚类"
+  ],
+  "传播聚类": [
+    "传递聚类"
+  ],
+  "Word2Vec传播聚类": [
+    "传递聚类"
+  ]
+}

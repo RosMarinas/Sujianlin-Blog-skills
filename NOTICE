@@ -1,0 +1,34 @@
+This repository is a mixed-license project.
+
+Code and engineering materials are licensed under the MIT License. This
+includes, unless noted otherwise:
+
+- `SKILL.md`
+- `skill/`
+- `visualize.py`
+- `visualize.html`
+- `schema.md`
+- `README.md`
+- `.gitignore`
+- build, test, and packaging files
+- `purpose.md` if added later
+- `docs/` if added later
+
+Knowledge content and structured derived content are licensed separately under
+CC BY-NC-SA 4.0. This includes, unless noted otherwise:
+
+- `wiki/`
+- `graph/`
+- `probes/` if added later
+
+The repository is designed to work without bundling the original evidence
+corpus. `Data/` is not part of the intended public GitHub release for this
+package.
+
+Upstream content attribution:
+
+- Original author: Su Jianlin
+- Original sites: `https://spaces.ac.cn/`, `https://kexue.fm/`
+
+Do not assume that all files in this repository are covered by the same
+license. See `LICENSE` and `LICENSE-content.md` for the governing terms.
