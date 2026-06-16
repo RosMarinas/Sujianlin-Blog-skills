@@ -5,7 +5,7 @@
 `cognitive-knowledge-network` is an agent-compatible skill and local cognitive library for both human readers and AI agents. This repository organizes Su Jianlin's blog corpus into a concept-and-method-oriented cognitive knowledge network, then exposes it both as a human-readable visual wiki and as an agent-friendly skill interface.
 
 This public repository distributes the skill, schema, documentation, and
-derived knowledge layers without bundling the original `Data/` corpus. The omitted `Data/` directory is the original evidence layer: a locally collected and organized archive of Su Jianlin blog materials, including source markdown converted from original pages and related assets.
+derived knowledge layers without bundling the original `Data/` corpus. The omitted `Data/` directory is the original evidence layer: a locally collected and organized archive of Su Jianlin blog materials, including source markdown converted from original pages and related assets.But trust me，the graph has enough knowledge,the core is connection!
 
 ## What is the Cognitive Knowledge Network?
 
